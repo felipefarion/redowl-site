@@ -10,15 +10,15 @@
   
 :root{color-scheme:dark;
     /* paleta ColorHunt (PO): #FF204E / #A0153E / #5D0E41 / #00224D + color-scheme dark anti-inversao */
-    --night:#00224d;
-    --panel:#5d0e41;
-    --panel-2:#520c39;
-    --parchment:#f2f4fa;
-    --dim:#93a1bd;
-    --red:#ff204e;
-    --red-deep:#a0153e;
-    --amber:#ff7d9d;
-    --line:rgba(242,244,250,.16);
+    --night:#ff204e;
+    --panel:#a0153e;
+    --panel-2:#a81742;
+    --parchment:#fff0f3;
+    --dim:#ffc9d4;
+    --red:#00224d;
+    --red-deep:#001634;
+    --amber:#fff0f3;
+    --line:rgba(255,240,243,.28);
     --mono:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace;
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
@@ -55,8 +55,9 @@
   }
   .cta:hover{text-decoration:none;filter:brightness(1.08)}
 
-  /* ---------- owl mark (pixel, do logo do PO) ---------- */
-  .owl-svg{width:34px;height:34px;flex:none;image-rendering:pixelated}
+  /* ---------- owl mark (pixel, do logo do PO) - placa marinho pro vermelho nao sumir no fundo vermelho ---------- */
+  .owl-plate{display:inline-flex;background:#00224d;border-radius:8px;padding:5px;flex:none}
+  .owl-svg{width:30px;height:30px;flex:none;image-rendering:pixelated}
 
   /* ---------- hero ---------- */
   .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:80px 0 64px}
@@ -173,8 +174,8 @@
 
   /* featured job (Primeira Terça) - newspaper masthead flair */
   .job.featured{
-    border-color:rgba(255,32,78,.45);
-    background:linear-gradient(180deg,rgba(255,32,78,.06),transparent 42%),var(--panel-2);
+    border-color:rgba(0,34,77,.45);
+    background:linear-gradient(180deg,rgba(0,34,77,.06),transparent 42%),var(--panel-2);
   }
   .masthead{
     text-align:center;border-top:3px double var(--line);border-bottom:2px solid var(--line);
@@ -251,7 +252,7 @@
 <header>
   <div class="wrap bar">
     <a class="brand" href="#top" aria-label="Red Owl Software - home">
-      <svg class="owl-svg" id="owl-mark" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"></svg>
+      <span class="owl-plate" aria-hidden="true"><svg class="owl-svg" id="owl-mark" viewBox="0 0 16 16" shape-rendering="crispEdges"></svg></span>
       <span class="wordmark"><b>Red Owl</b> Software</span>
     </a>
     <div class="bar-right">
@@ -721,7 +722,7 @@ const OWL_ROWS = [
   "................",
   "................"
 ];
-const OWL_COLORS = {T:"#a0153e",B:"#ff204e",D:"#a0153e",W:"#ffffff",P:"#00224d",K:"#ff7d9d",F:"#ff7d9d"};
+const OWL_COLORS = {T:"#a0153e",B:"#ff204e",D:"#a0153e",W:"#ffffff",P:"#001634",K:"#fff0f3",F:"#fff0f3"};
 function owlSVG(){
   let s = "";
   OWL_ROWS.forEach((row,y)=>{ [...row].forEach((ch,x)=>{ if(ch!=="." && OWL_COLORS[ch]) s+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${OWL_COLORS[ch]}"/>`; }); });
@@ -730,7 +731,7 @@ function owlSVG(){
 document.getElementById("owl-mark").innerHTML = owlSVG();
 const fav = document.createElement("link");
 fav.rel = "icon"; fav.type = "image/svg+xml";
-fav.href = "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">${owlSVG()}</svg>`);
+fav.href = "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect width="16" height="16" rx="3" fill="#00224d"/>${owlSVG()}</svg>`);
 document.head.appendChild(fav);
 </script>
 
