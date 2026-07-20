@@ -75,6 +75,21 @@
   }
   .ghost:hover{border-color:var(--amber);text-decoration:none}
 
+  /* contact icon buttons with hover tooltip */
+  .icon-btn{
+    position:relative;display:inline-flex;align-items:center;justify-content:center;
+    width:42px;height:42px;border:1px solid var(--line);border-radius:4px;color:var(--amber);
+  }
+  .icon-btn svg{width:20px;height:20px;fill:currentColor}
+  .icon-btn:hover{border-color:var(--amber);color:var(--red);text-decoration:none}
+  .icon-btn::after{
+    content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;
+    transform:translateX(-50%);background:var(--panel);border:1px solid var(--line);
+    color:var(--parchment);font-family:var(--mono);font-size:.68rem;padding:5px 9px;
+    border-radius:4px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;
+  }
+  .icon-btn:hover::after,.icon-btn:focus-visible::after{opacity:1}
+
   /* the night-watch log - signature element */
   .log{
     background:var(--panel);border:1px solid var(--line);border-radius:6px;
@@ -173,6 +188,10 @@
   .about{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start}
   .about p{color:var(--dim);margin-bottom:14px;max-width:58ch}
   .about p.first{color:var(--parchment)}
+  .about .h2-sub{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--amber);margin:-4px 0 18px;
+  }
   .aside{
     border:1px solid var(--line);border-radius:6px;background:var(--panel-2);
     padding:24px;font-size:.9rem;color:var(--dim);
@@ -225,7 +244,12 @@
       <h1 data-i18n-html="hero_h1">One person. A governed fleet of AI agents. <em>Production software.</em></h1>
       <p class="lede" data-i18n="hero_lede">Red Owl designs and runs fleets of AI agents that build, test and audit real products - while every decision about money, access and personal data stays human.</p>
       <div class="hero-actions">
-        <a class="cta" href="mailto:felipefarion@gmail.com">felipefarion@gmail.com</a>
+        <a class="icon-btn" href="mailto:felipefarion@gmail.com" data-tip="felipefarion@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://wa.me/5541992297995" rel="noopener" data-tip="+55 41 99229-7995" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        </a>
         <a class="ghost" href="#work" data-i18n="hero_ghost">See the work</a>
       </div>
     </div>
@@ -380,8 +404,9 @@
       <div>
         <p class="sec-label" data-i18n="about_label">The person behind the owl</p>
         <h2>Felipe Farion</h2>
-        <p class="first" data-i18n="about_p1">Product owner (PMP) with 15+ years across real-world operations and digital products - from running a postal franchise moving 1,000+ packages a day to building and operating the products above.</p>
-        <p data-i18n="about_p2">PMP-certified, trilingual (Portuguese, English, Spanish). What drives me is turning messy processes into systems that run on their own - it was true at the postal franchise, it is true with the fleet.</p>
+        <p class="h2-sub" data-i18n="about_cert">Certified in project methodology (PMP)</p>
+        <p class="first" data-i18n="about_p1">Product owner with 15+ years across real-world operations and digital products - from running a postal franchise moving 1,000+ packages a day to building and operating the products above.</p>
+        <p data-i18n="about_p2">Trilingual (Portuguese, English, Spanish). What drives me is turning messy processes into systems that run on their own - it was true at the postal franchise, it is true with the fleet.</p>
         <p data-i18n="about_p3">The studio is deliberately one person plus a fleet - the method, applied to itself.</p>
       </div>
       <div class="aside">
@@ -403,8 +428,13 @@
       <p class="wordmark"><b>Red Owl</b> Software</p>
       <small data-i18n="footer_copy">© 2026 Red Owl Software · Curitiba, Brazil</small>
     </div>
-    <div>
-      <a class="cta" href="mailto:felipefarion@gmail.com">felipefarion@gmail.com</a>
+    <div style="display:flex;gap:10px">
+      <a class="icon-btn" href="mailto:felipefarion@gmail.com" data-tip="felipefarion@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+      <a class="icon-btn" href="https://wa.me/5541992297995" rel="noopener" data-tip="+55 41 99229-7995" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      </a>
     </div>
     <p class="langs">EN · PT · ES</p>
   </div>
@@ -485,8 +515,9 @@ const I18N = {
     r4_id:"REGRA 04 - DECISÃO REGISTRADA", r4_h:"ADRs, não achismo",
     r4_p:"Toda decisão de arquitetura vira documento versionado. Agente consulta o registro antes de agir; nada é re-decidido em silêncio.",
     about_label:"A pessoa por trás da coruja",
-    about_p1:"Product owner (PMP) com 15+ anos entre operações do mundo real e produtos digitais - de uma franquia dos Correios com 1.000+ pacotes/dia à construção e operação dos produtos acima.",
-    about_p2:"Certificado PMP, trilíngue (português, inglês e espanhol). O que me move é transformar processo bagunçado em sistema que roda sozinho - era assim na franquia dos Correios, é assim com a frota.",
+    about_cert:"Com certificação em metodologia de projetos (PMP)",
+    about_p1:"Product owner com 15+ anos entre operações do mundo real e produtos digitais - de uma franquia dos Correios com 1.000+ pacotes/dia à construção e operação dos produtos acima.",
+    about_p2:"Trilíngue (português, inglês e espanhol). O que me move é transformar processo bagunçado em sistema que roda sozinho - era assim na franquia dos Correios, é assim com a frota.",
     about_p3:"O estúdio é, de propósito, uma pessoa mais uma frota - o método, aplicado a si mesmo.",
     glance:"Num relance",
     g1:"Product owner certificado PMP",
@@ -567,8 +598,9 @@ const I18N = {
     r4_id:"REGLA 04 - DECISIONES REGISTRADAS", r4_h:"ADRs, no corazonadas",
     r4_p:"Toda decisión de arquitectura se escribe y se versiona. Los agentes consultan el registro antes de actuar; nada se re-decide en silencio.",
     about_label:"La persona detrás del búho",
-    about_p1:"Product owner (PMP) con 15+ años entre operaciones del mundo real y productos digitales - de una franquicia postal con 1.000+ paquetes/día a construir y operar los productos de arriba.",
-    about_p2:"Certificado PMP, trilingüe (portugués, inglés y español). Lo que me mueve es convertir procesos desordenados en sistemas que corren solos - así fue en la franquicia postal, así es con la flota.",
+    about_cert:"Con certificación en metodología de proyectos (PMP)",
+    about_p1:"Product owner con 15+ años entre operaciones del mundo real y productos digitales - de una franquicia postal con 1.000+ paquetes/día a construir y operar los productos de arriba.",
+    about_p2:"Trilingüe (portugués, inglés y español). Lo que me mueve es convertir procesos desordenados en sistemas que corren solos - así fue en la franquicia postal, así es con la flota.",
     about_p3:"El estudio es, a propósito, una persona más una flota - el método, aplicado a sí mismo.",
     glance:"De un vistazo",
     g1:"Product owner certificado PMP",
