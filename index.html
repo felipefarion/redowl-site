@@ -169,6 +169,32 @@
   .flow i{align-self:center;color:var(--red);font-style:normal;font-family:var(--mono)}
   .flow-note{color:var(--dim);font-size:.85rem;margin-top:12px}
 
+  /* featured job (Primeira Terça) - newspaper masthead flair */
+  .job.featured{
+    border-color:rgba(230,58,46,.45);
+    background:linear-gradient(180deg,rgba(230,58,46,.06),transparent 42%),var(--panel-2);
+  }
+  .masthead{
+    text-align:center;border-top:3px double var(--line);border-bottom:2px solid var(--line);
+    padding:14px 0 12px;margin-bottom:16px;
+  }
+  .masthead .kicker{
+    display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--dim);margin-bottom:8px;
+  }
+  .masthead h3{font-family:var(--serif);font-weight:400;font-size:2.1rem;letter-spacing:.01em}
+  .masthead h3 em{font-style:normal;color:var(--red)}
+  .tag.center{text-align:center;max-width:62ch;margin:0 auto 8px}
+  .job-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin:16px 0 18px;
+  }
+  .job-stats div{background:var(--panel);padding:12px 14px;text-align:center}
+  .job-stats .n{font-family:var(--serif);font-size:1.4rem;color:var(--amber)}
+  .job-stats .l{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+  @media (max-width:860px){.job-stats{grid-template-columns:1fr 1fr}}
+
   /* proof strip */
   .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
   .stat{background:var(--panel-2);padding:22px 24px}
@@ -338,13 +364,29 @@
           <p class="flow-note" data-i18n="job2_note">The whole funnel runs itself, end to end - one person operates it in minutes a day.</p>
         </div>
 
-        <div class="job">
-          <div class="job-top"><h3>Primeira Terça · Tax Deed Support</h3><span class="chip" data-i18n="job3_chip">Live · national</span></div>
-          <p class="tag" data-i18n="job3_tag">A data product that lets Brazilian investors research US tax-deed auctions - every fragmented public record, one decision-ready page.</p>
+        <div class="job featured">
+          <div class="masthead">
+            <p class="kicker"><span>Tax Deed Support</span><span class="chip" data-i18n="job3_chip">Live · national</span></p>
+            <h3>Primeira <em>Terça</em></h3>
+          </div>
+          <p class="tag center" data-i18n="job3_tag">A data product that lets Brazilian investors research US tax-deed auctions - every fragmented public record, one decision-ready page.</p>
+          <div class="job-stats">
+            <div><p class="n" data-i18n="js1n">3,143</p><p class="l" data-i18n="js1l">US counties mapped</p></div>
+            <div><p class="n">51</p><p class="l" data-i18n="js2l">state jurisdictions catalogued</p></div>
+            <div><p class="n" data-i18n="js3n">1,271</p><p class="l" data-i18n="js3l">property pages live (TX + GA)</p></div>
+            <div><p class="n" data-i18n="js4n">&lt;1 wk</p><p class="l" data-i18n="js4l">list to full pages, per new state</p></div>
+          </div>
+          <p class="flow-title" data-i18n="dd_t">6-step due diligence, one page, every data point with source and date</p>
+          <div class="flow">
+            <span data-i18n="dd1">Opening bid</span><i>→</i>
+            <span data-i18n="dd2">Official appraisal</span><i>→</i>
+            <span data-i18n="dd3">Map + Street View</span><i>→</i>
+            <span data-i18n="dd4">Flood zone</span><i>→</i>
+            <span data-i18n="dd5">Market estimate</span><i>→</i>
+            <span data-i18n="dd6">Deed (OCR)</span>
+          </div>
+          <p class="flow-title" data-i18n="job3_more">Under the hood</p>
           <ul>
-            <li data-i18n="job3_l1">3,143 US counties mapped for auction availability, with state-law rules catalogued for all 51 jurisdictions</li>
-            <li data-i18n="job3_l2">1,271 property pages live across two states (Texas + Georgia) for the same auction day - list to full page in under a week per new state</li>
-            <li data-i18n="job3_l3">6-step due diligence on a single page: opening bid, official appraisal, map/Street View, flood zone, market estimate, deed - every data point with source and date</li>
             <li data-i18n="job3_l4">Data is audited, not just filled: sampled pages re-verified against official sources through independent channels; auction bids matched to the cent, zero divergences</li>
             <li data-i18n="job3_l5">Verification history shipped as UI: hover any data point to see when it was checked, how many times, and by which source</li>
             <li data-i18n="job3_l6">Registered deeds read by multimodal AI (OCR) to surface the real sale price Texas legally hides (non-disclosure state)</li>
@@ -506,6 +548,14 @@ const I18N = {
     job3_l8:"Quando os servidores federais de mapa de enchente caíram no meio do projeto (shutdown), o pipeline re-roteou pra espelhos oficiais independentes - mesmo dado, com verificação cruzada",
     job3_l9:"Assistente de IA determinístico: responde só da base, cita os registros, e diz \"não coberto\" em vez de chutar",
     job3_l10:"Interface dupla inspirada em jornal - \"edição de estudo\" pro iniciante, \"edição de leilão\" pro experiente - em PT/EN/ES, com glossário que explica os termos por analogias brasileiras (CAD ≈ valor venal do IPTU)",
+    js1n:"3.143", js1l:"condados dos EUA mapeados",
+    js2l:"jurisdições estaduais catalogadas",
+    js3n:"1.271", js3l:"fichas de imóveis no ar (TX + GA)",
+    js4n:"<1 sem", js4l:"da lista às fichas completas, por estado novo",
+    dd_t:"Due diligence de 6 passos, numa página, cada dado com fonte e data",
+    dd1:"Lance de abertura", dd2:"Avaliação oficial", dd3:"Mapa + Street View",
+    dd4:"Zona de enchente", dd5:"Estimativa de mercado", dd6:"Escritura (OCR)",
+    job3_more:"Por dentro",
     proof_label:"Medido num dia típico",
     proof_h2:"A operação, em números.",
     st1:"testes automatizados verdes, por dia",
@@ -595,6 +645,14 @@ const I18N = {
     job3_l8:"Cuando los servidores federales de mapas de inundación cayeron en pleno desarrollo (shutdown), el pipeline se re-ruteó a espejos oficiales independientes - el mismo dato, con verificación cruzada",
     job3_l9:"Asistente de IA determinístico: responde solo desde la base, cita los registros y dice \"no cubierto\" en vez de adivinar",
     job3_l10:"Interfaz doble inspirada en periódicos - \"edición de estudio\" para principiantes, \"edición de subasta\" para expertos - en PT/EN/ES, con glosario que explica los términos por analogías brasileñas",
+    js1n:"3.143", js1l:"condados de EE. UU. mapeados",
+    js2l:"jurisdicciones estatales catalogadas",
+    js3n:"1.271", js3l:"fichas de inmuebles en línea (TX + GA)",
+    js4n:"<1 sem", js4l:"de la lista a fichas completas, por estado nuevo",
+    dd_t:"Due diligence de 6 pasos, en una página, cada dato con fuente y fecha",
+    dd1:"Puja de apertura", dd2:"Avalúo oficial", dd3:"Mapa + Street View",
+    dd4:"Zona de inundación", dd5:"Estimación de mercado", dd6:"Escritura (OCR)",
+    job3_more:"Por dentro",
     proof_label:"Medido en un día típico",
     proof_h2:"La operación, en números.",
     st1:"tests automatizados en verde, por día",
