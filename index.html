@@ -3,19 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Red Owl Software — an agentic software studio</title>
+<title>Red Owl Software - an agentic software studio</title>
 <meta name="description" content="Red Owl Software is a one-person studio that ships production software with a governed fleet of AI agents. Products, data pipelines, headless commerce, Brazil market entry.">
 <style>
   :root{
-    --night:#16100c;
-    --panel:#211712;
-    --panel-2:#1b1410;
-    --parchment:#efe3d2;
-    --dim:#a6907c;
-    --red:#c43b2a;
-    --red-deep:#8e2a1e;
-    --amber:#e8a13d;
-    --line:rgba(239,227,210,.14);
+    /* paleta derivada do logo (coruja Claude Design do PO) */
+    --night:#131118;
+    --panel:#1c1720;
+    --panel-2:#171219;
+    --parchment:#f2ece1;
+    --dim:#a89a90;
+    --red:#e63a2e;
+    --red-deep:#96231d;
+    --amber:#f0a030;
+    --line:rgba(242,236,225,.14);
     --mono:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace;
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
@@ -52,23 +53,8 @@
   }
   .cta:hover{text-decoration:none;filter:brightness(1.08)}
 
-  /* ---------- owl mark ---------- */
-  .owl{width:34px;height:34px;position:relative;flex:none}
-  .owl .face{position:absolute;inset:0;background:var(--red-deep);border-radius:50% 50% 46% 46%}
-  .owl .eye{
-    position:absolute;top:9px;width:9px;height:9px;border-radius:50%;
-    background:var(--amber);box-shadow:0 0 6px rgba(232,161,61,.55);
-  }
-  .owl .eye.l{left:6px}.owl .eye.r{right:6px}
-  .owl .beak{
-    position:absolute;left:50%;top:17px;width:6px;height:7px;transform:translateX(-50%);
-    background:var(--parchment);clip-path:polygon(50% 100%,0 0,100% 0);opacity:.85;
-  }
-  @media (prefers-reduced-motion:no-preference){
-    .owl .eye{animation:blink 7s infinite}
-    .owl .eye.r{animation-delay:.05s}
-    @keyframes blink{0%,94%,100%{transform:scaleY(1)}96%,98%{transform:scaleY(.08)}}
-  }
+  /* ---------- owl mark (pixel, do logo do PO) ---------- */
+  .owl-svg{width:34px;height:34px;flex:none;image-rendering:pixelated}
 
   /* ---------- hero ---------- */
   .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:80px 0 64px}
@@ -89,7 +75,7 @@
   }
   .ghost:hover{border-color:var(--amber);text-decoration:none}
 
-  /* the night-watch log — signature element */
+  /* the night-watch log - signature element */
   .log{
     background:var(--panel);border:1px solid var(--line);border-radius:6px;
     font-family:var(--mono);font-size:.78rem;line-height:1.9;color:var(--dim);
@@ -217,8 +203,8 @@
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#top" aria-label="Red Owl Software — home">
-      <span class="owl" aria-hidden="true"><span class="face"></span><span class="eye l"></span><span class="eye r"></span><span class="beak"></span></span>
+    <a class="brand" href="#top" aria-label="Red Owl Software - home">
+      <svg class="owl-svg" id="owl-mark" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"></svg>
       <span class="wordmark"><b>Red Owl</b> Software</span>
     </a>
     <div class="bar-right">
@@ -237,21 +223,21 @@
     <div>
       <p class="eyebrow" data-i18n="hero_eyebrow">An agentic software studio · Curitiba, Brazil</p>
       <h1 data-i18n-html="hero_h1">One person. A governed fleet of AI agents. <em>Production software.</em></h1>
-      <p class="lede" data-i18n="hero_lede">Red Owl designs and runs fleets of AI agents that build, test and audit real products — while every decision about money, access and personal data stays human.</p>
+      <p class="lede" data-i18n="hero_lede">Red Owl designs and runs fleets of AI agents that build, test and audit real products - while every decision about money, access and personal data stays human.</p>
       <div class="hero-actions">
         <a class="cta" href="mailto:felipefarion@gmail.com">felipefarion@gmail.com</a>
         <a class="ghost" href="#work" data-i18n="hero_ghost">See the work</a>
       </div>
     </div>
     <div class="log" role="img" aria-label="A night-watch log of the agent fleet: deploy trains closing, tests passing, an audit catching a fabricated result.">
-      <div class="log-head"><span data-i18n="log_title">night watch — fleet log</span><span class="live" data-i18n="log_live">● on duty</span></div>
-      <p><span class="t">19:19</span>deploy train closed — <span class="ok">15/15 smokes green</span></p>
-      <p><span class="t">19:53</span>adversarial gate, pass 3 — <span class="ok">GREEN</span>, merge allowed</p>
+      <div class="log-head"><span data-i18n="log_title">night watch - fleet log</span><span class="live" data-i18n="log_live">● on duty</span></div>
+      <p><span class="t">19:19</span>deploy train closed - <span class="ok">15/15 smokes green</span></p>
+      <p><span class="t">19:53</span>adversarial gate, pass 3 - <span class="ok">GREEN</span>, merge allowed</p>
       <p><span class="t">20:52</span>blind audit: <span class="hl">23/23 honeypots caught</span></p>
-      <p><span class="t">21:22</span>catalog reconciliation — 12,788 rows verified</p>
-      <p><span class="t">21:37</span>test suite — <span class="ok">2,225 / 2,225 passing</span></p>
+      <p><span class="t">21:22</span>catalog reconciliation - 12,788 rows verified</p>
+      <p><span class="t">21:37</span>test suite - <span class="ok">2,225 / 2,225 passing</span></p>
       <p><span class="t">22:14</span>model fabricated a result → <span class="hl">blocked by control</span></p>
-      <p><span class="t">22:52</span>rollback drill — restore verified</p>
+      <p><span class="t">22:52</span>rollback drill - restore verified</p>
       <p><span class="t">23:30</span>fix shipped: 11,529 records corrected, audited</p>
     </div>
   </div>
@@ -263,11 +249,11 @@
       <div class="svc">
         <article>
           <h3 data-i18n="svc1_h">Agentic automation, with governance</h3>
-          <p data-i18n="svc1_p">Fleets of AI agents doing real operational work in your business — with the same rulebook we run on: human hard lines, adversarial gates, auditable output.</p>
+          <p data-i18n="svc1_p">Fleets of AI agents doing real operational work in your business - with the same rulebook we run on: human hard lines, adversarial gates, auditable output.</p>
         </article>
         <article>
           <h3 data-i18n="svc2_h">Data pipelines &amp; reconciliation</h3>
-          <p data-i18n="svc2_p">Collecting, cleaning and matching messy multi-source data into one trustworthy catalog — deterministic matching, blind-control audits, precision you can measure.</p>
+          <p data-i18n="svc2_p">Collecting, cleaning and matching messy multi-source data into one trustworthy catalog - deterministic matching, blind-control audits, precision you can measure.</p>
         </article>
         <article>
           <h3 data-i18n="svc3_h">Headless commerce &amp; re-platforms</h3>
@@ -275,7 +261,7 @@
         </article>
         <article>
           <h3 data-i18n="svc4_h">Brazil market entry</h3>
-          <p data-i18n="svc4_p">Tax invoicing (NF-e), logistics (Correios), split payments, marketplace integrations — the operational layer a foreign company needs to actually sell in Brazil.</p>
+          <p data-i18n="svc4_p">Tax invoicing (NF-e), logistics (Correios), split payments, marketplace integrations - the operational layer a foreign company needs to actually sell in Brazil.</p>
         </article>
       </div>
     </div>
@@ -283,7 +269,7 @@
 
   <section id="work">
     <div class="wrap">
-      <p class="sec-label" data-i18n="work_label">Work — built and operated here</p>
+      <p class="sec-label" data-i18n="work_label">Work - built and operated here</p>
       <h2 data-i18n="work_h2">The proof is shipped product.</h2>
       <div class="work">
 
@@ -291,7 +277,7 @@
           <div class="job-top"><h3>Magus platform</h3><span class="chip" data-i18n="job1_chip">Live since 2024</span></div>
           <p class="tag" data-i18n="job1_tag">The technology behind a trading-card marketplace.</p>
           <ul>
-            <li data-i18n="job1_l1">Full Magento re-platform — 1.4M lines of custom and third-party module code — to a headless stack, with zero hand-written code</li>
+            <li data-i18n="job1_l1">Full Magento re-platform - 1.4M lines of custom and third-party module code - to a headless stack, with zero hand-written code</li>
             <li data-i18n="job1_l2">Canonical catalog of ~290k items across 13 product lines, deterministic multi-source reconciliation</li>
             <li data-i18n="job1_l3">Search over 2.4M documents with 15-minute incremental updates</li>
             <li data-i18n="job1_l4">Seller BI: multi-channel price comparison and a rule-based repricer, sold as a product</li>
@@ -302,14 +288,14 @@
 
         <div class="job">
           <div class="job-top"><h3>ProoVoo</h3><span class="chip" data-i18n="job2_chip">Live</span></div>
-          <p class="tag" data-i18n-html="job2_tag">Identity verification (KYC) against fraud in person-to-person services — conceived, built and launched end to end; online at <a href="https://proovoo.com" rel="noopener">proovoo.com</a>. Proof that a full app/site ships from the idea to production.</p>
+          <p class="tag" data-i18n-html="job2_tag">Identity verification (KYC) against fraud in person-to-person services - conceived, built and launched end to end; online at <a href="https://proovoo.com" rel="noopener">proovoo.com</a>. Proof that a full app/site ships from the idea to production.</p>
           <ul>
             <li data-i18n="job2_l1">iOS and Android apps built end to end by the agent fleet</li>
             <li data-i18n="job2_l2">KYC provider integration and OTP verification</li>
-            <li data-i18n="job2_l3">Validated with real paid traffic before full build — two anchor audiences</li>
+            <li data-i18n="job2_l3">Validated with real paid traffic before full build - two anchor audiences</li>
             <li data-i18n="job2_l4">Zero-touch conversion: acquisition to signup with no human in the loop</li>
           </ul>
-          <p class="flow-title" data-i18n="conc_t">Full product conception — from the idea to live</p>
+          <p class="flow-title" data-i18n="conc_t">Full product conception - from the idea to live</p>
           <div class="flow">
             <span data-i18n="conc1">Ideation</span><i>→</i>
             <span data-i18n="conc2">3 business cases written</span><i>→</i>
@@ -325,7 +311,7 @@
             <span data-i18n="flow4">Lifecycle: welcome · D+2 · D+5 · win-back</span><i>→</i>
             <span data-i18n="flow5">Analytics (PostHog) feeding campaigns back</span>
           </div>
-          <p class="flow-note" data-i18n="job2_note">The whole funnel runs itself, end to end — one person operates it in minutes a day.</p>
+          <p class="flow-note" data-i18n="job2_note">The whole funnel runs itself, end to end - one person operates it in minutes a day.</p>
         </div>
 
         <div class="job">
@@ -355,33 +341,33 @@
         <div class="stat"><p class="n">99.99<span>%</span></p><p class="d" data-i18n="st5">precision target on price-adjacent data</p></div>
         <div class="stat"><p class="n">0</p><p class="d" data-i18n="st6">lines of hand-written code in a full Magento re-platform</p></div>
       </div>
-      <p class="proof-note" data-i18n="proof_note">That last one matters: an entire Magento platform — 1.4 million lines of custom and third-party module code, over 1 million of them PHP — migrated to a modern headless stack with every line implemented by agents. Direction, architecture and acceptance criteria by a human.</p>
+      <p class="proof-note" data-i18n="proof_note">That last one matters: an entire Magento platform - 1.4 million lines of custom and third-party module code, over 1 million of them PHP - migrated to a modern headless stack with every line implemented by agents. Direction, architecture and acceptance criteria by a human.</p>
     </div>
   </section>
 
   <section id="method">
     <div class="wrap">
-      <p class="sec-label" data-i18n="method_label">House rules — how the fleet is governed</p>
+      <p class="sec-label" data-i18n="method_label">House rules - how the fleet is governed</p>
       <h2 data-i18n="method_h2">Agents do the work. They never get the judgment.</h2>
       <p class="sec-intro" data-i18n="method_intro">Anyone can prompt an AI to write code. The hard part is trusting what comes back. Red Owl's answer is a written rulebook the fleet actually runs on:</p>
       <div class="rules">
         <div class="rule">
-          <p class="id" data-i18n="r1_id">RULE 01 — HUMAN HARD LINES</p>
+          <p class="id" data-i18n="r1_id">RULE 01 - HUMAN HARD LINES</p>
           <h3 data-i18n="r1_h">Money, access, personal data</h3>
           <p data-i18n="r1_p">No agent moves money, touches credentials or deletes personal data. Ever. Those three calls are made by a person, on the record.</p>
         </div>
         <div class="rule">
-          <p class="id" data-i18n="r2_id">RULE 02 — ADVERSARIAL GATES</p>
+          <p class="id" data-i18n="r2_id">RULE 02 - ADVERSARIAL GATES</p>
           <h3 data-i18n="r2_h">Refute before merge</h3>
-          <p data-i18n="r2_p">Before work ships, an independent agent tries to tear it apart — up to three passes. Nothing merges without a green verdict it failed to refute.</p>
+          <p data-i18n="r2_p">Before work ships, an independent agent tries to tear it apart - up to three passes. Nothing merges without a green verdict it failed to refute.</p>
         </div>
         <div class="rule">
-          <p class="id" data-i18n="r3_id">RULE 03 — BLIND CONTROLS</p>
+          <p class="id" data-i18n="r3_id">RULE 03 - BLIND CONTROLS</p>
           <h3 data-i18n="r3_h">Honeypots in every audit</h3>
-          <p data-i18n="r3_p">Audits include planted cases the auditor can't recognize. These controls have caught a model fabricating results — and blocked it. That's why the numbers can be trusted.</p>
+          <p data-i18n="r3_p">Audits include planted cases the auditor can't recognize. These controls have caught a model fabricating results - and blocked it. That's why the numbers can be trusted.</p>
         </div>
         <div class="rule">
-          <p class="id" data-i18n="r4_id">RULE 04 — DECISIONS ON RECORD</p>
+          <p class="id" data-i18n="r4_id">RULE 04 - DECISIONS ON RECORD</p>
           <h3 data-i18n="r4_h">ADRs, not vibes</h3>
           <p data-i18n="r4_p">Every architectural decision is written down and versioned. Agents consult the record before acting; nothing gets silently re-decided.</p>
         </div>
@@ -394,9 +380,9 @@
       <div>
         <p class="sec-label" data-i18n="about_label">The person behind the owl</p>
         <h2>Felipe Farion</h2>
-        <p class="first" data-i18n="about_p1">Product owner (PMP) with 15+ years across real-world operations and digital products — from running a postal franchise moving 1,000+ packages a day to building and operating the products above.</p>
+        <p class="first" data-i18n="about_p1">Product owner (PMP) with 15+ years across real-world operations and digital products - from running a postal franchise moving 1,000+ packages a day to building and operating the products above.</p>
         <p data-i18n="about_p2">Selected by Card Trader (Italy), the global leader in collectible-card marketplaces, to establish its operation in Brazil. Trilingual: Portuguese, English, Spanish.</p>
-        <p data-i18n="about_p3">The studio is deliberately one person plus a fleet — the method, applied to itself.</p>
+        <p data-i18n="about_p3">The studio is deliberately one person plus a fleet - the method, applied to itself.</p>
       </div>
       <div class="aside">
         <p class="id" data-i18n="glance">At a glance</p>
@@ -404,7 +390,7 @@
           <li data-i18n="g1">PMP-certified product owner</li>
           <li data-i18n="g2">Fleet: Claude + Gemini agents, governed</li>
           <li>PT · EN · ES</li>
-          <li data-i18n="g4">Curitiba, Brazil — remote worldwide</li>
+          <li data-i18n="g4">Curitiba, Brazil - remote worldwide</li>
         </ul>
       </div>
     </div>
@@ -415,7 +401,7 @@
   <div class="wrap foot">
     <div>
       <p class="wordmark"><b>Red Owl</b> Software</p>
-      <small>© 2026 Red Owl Software · Curitiba, Brazil</small>
+      <small data-i18n="footer_copy">© 2026 Red Owl Software · Curitiba, Brazil</small>
     </div>
     <div>
       <a class="cta" href="mailto:felipefarion@gmail.com">felipefarion@gmail.com</a>
@@ -430,32 +416,32 @@ const I18N = {
     cta_top:"Começar uma conversa",
     hero_eyebrow:"Um estúdio de software agêntico · Curitiba, Brasil",
     hero_h1:"Uma pessoa. Uma frota governada de agentes de IA. <em>Software em produção.</em>",
-    hero_lede:"A Red Owl desenha e opera frotas de agentes de IA que constroem, testam e auditam produtos de verdade — enquanto toda decisão sobre dinheiro, acesso e dados pessoais continua humana.",
+    hero_lede:"A Red Owl desenha e opera frotas de agentes de IA que constroem, testam e auditam produtos de verdade - enquanto toda decisão sobre dinheiro, acesso e dados pessoais continua humana.",
     hero_ghost:"Ver os trabalhos",
-    log_title:"vigília — log da frota", log_live:"● de plantão",
+    log_title:"vigília - log da frota", log_live:"● de plantão",
     svc_label:"Trabalho pra clientes",
     svc_h2:"O que o estúdio faz pela sua empresa.",
     svc1_h:"Automação agêntica, com governança",
-    svc1_p:"Frotas de agentes de IA fazendo trabalho operacional real no seu negócio — com o mesmo livro de regras que usamos aqui: linhas duras humanas, gates adversariais, saída auditável.",
+    svc1_p:"Frotas de agentes de IA fazendo trabalho operacional real no seu negócio - com o mesmo livro de regras que usamos aqui: linhas duras humanas, gates adversariais, saída auditável.",
     svc2_h:"Pipelines de dados e reconciliação",
-    svc2_p:"Coletar, limpar e casar dados bagunçados de múltiplas fontes num catálogo confiável — matching determinístico, auditorias com controles cegos, precisão que se mede.",
+    svc2_p:"Coletar, limpar e casar dados bagunçados de múltiplas fontes num catálogo confiável - matching determinístico, auditorias com controles cegos, precisão que se mede.",
     svc3_h:"Commerce headless e re-plataformas",
     svc3_p:"Sair de stacks legadas de e-commerce (Magento e afins) sem parar a operação. Fizemos a jornada completa primeiro no nosso próprio produto.",
     svc4_h:"Operação Brasil pra empresas de fora",
-    svc4_p:"Nota fiscal (NF-e), logística (Correios), split de pagamento, integrações de marketplace — a camada operacional que uma empresa estrangeira precisa pra vender de verdade no Brasil.",
-    work_label:"Trabalhos — construídos e operados aqui",
+    svc4_p:"Nota fiscal (NF-e), logística (Correios), split de pagamento, integrações de marketplace - a camada operacional que uma empresa estrangeira precisa pra vender de verdade no Brasil.",
+    work_label:"Trabalhos - construídos e operados aqui",
     work_h2:"A prova é produto entregue.",
     job1_chip:"No ar desde 2024",
     job1_tag:"A tecnologia por trás de um marketplace de trading cards.",
-    job1_l1:"Re-plataforma completa do Magento — 1,4 milhão de linhas de módulos custom e de terceiros — pra stack headless, com zero código escrito à mão",
+    job1_l1:"Re-plataforma completa do Magento - 1,4 milhão de linhas de módulos custom e de terceiros - pra stack headless, com zero código escrito à mão",
     job1_l2:"Catálogo canônico de ~290 mil itens em 13 linhas de produto, reconciliação multi-fonte determinística",
     job1_l3:"Busca sobre 2,4M de documentos com atualização incremental a cada 15 minutos",
     job1_l4:"BI do vendedor: comparação de preços multi-canal e repricer por regras, vendido como produto",
     job1_l5:"Camada Brasil: NF-e, logística Correios, split de pagamento, hub de marketplaces",
     job1_l6:"Auditoria visual de catálogo assistida por IA com controles cegos (honeypots)",
     job2_chip:"No ar",
-    job2_tag:"Verificação de identidade (KYC) contra fraude em serviços entre pessoas — concebido, construído e lançado de ponta a ponta; online em <a href='https://proovoo.com' rel='noopener'>proovoo.com</a>. Prova de que um app/site completo sai da ideia à produção.",
-    conc_t:"A concepção completa do produto — da ideia ao ar",
+    job2_tag:"Verificação de identidade (KYC) contra fraude em serviços entre pessoas - concebido, construído e lançado de ponta a ponta; online em <a href='https://proovoo.com' rel='noopener'>proovoo.com</a>. Prova de que um app/site completo sai da ideia à produção.",
+    conc_t:"A concepção completa do produto - da ideia ao ar",
     conc1:"Ideação",
     conc2:"3 business cases escritos",
     conc3:"Validação fake-door · 2 públicos",
@@ -463,7 +449,7 @@ const I18N = {
     conc5:"No ar + motor de crescimento automatizado",
     job2_l1:"Apps iOS e Android construídos de ponta a ponta pela frota de agentes",
     job2_l2:"Integração com provedor de KYC e verificação por OTP",
-    job2_l3:"Validado com tráfego pago real antes do produto completo — dois públicos-âncora",
+    job2_l3:"Validado com tráfego pago real antes do produto completo - dois públicos-âncora",
     job2_l4:"Conversão sem toque: da aquisição ao cadastro sem humano no meio",
     job2_flow_t:"O motor de marketing 100% automatizado",
     flow1:"Google Ads (certificação de política do nicho)",
@@ -471,7 +457,7 @@ const I18N = {
     flow3:"Cadastro self-serve · OTP + KYC",
     flow4:"Lifecycle: boas-vindas · D+2 · D+5 · win-back",
     flow5:"Analytics (PostHog) realimentando campanhas",
-    job2_note:"O funil inteiro roda sozinho, de ponta a ponta — uma pessoa opera em minutos por dia.",
+    job2_note:"O funil inteiro roda sozinho, de ponta a ponta - uma pessoa opera em minutos por dia.",
     job3_chip:"No ar",
     job3_tag:"Produto de dados pra leilões imobiliários por dívida fiscal nos EUA.",
     job3_l1:"254 condados do Texas mapeados, com regras por condado catalogadas",
@@ -486,57 +472,58 @@ const I18N = {
     st4:"documentos de busca, atualização em 15 min",
     st5:"meta de precisão em dado que toca preço",
     st6:"linhas de código escritas à mão na re-plataforma do Magento",
-    proof_note:"O último importa: uma plataforma Magento inteira — 1,4 milhão de linhas de módulos custom e de terceiros, mais de 1 milhão só de PHP — migrada pra uma stack headless moderna com cada linha implementada por agentes. Direção, arquitetura e critérios de aceite por um humano.",
-    method_label:"Regras da casa — como a frota é governada",
+    proof_note:"O último importa: uma plataforma Magento inteira - 1,4 milhão de linhas de módulos custom e de terceiros, mais de 1 milhão só de PHP - migrada pra uma stack headless moderna com cada linha implementada por agentes. Direção, arquitetura e critérios de aceite por um humano.",
+    method_label:"Regras da casa - como a frota é governada",
     method_h2:"Agentes fazem o trabalho. Nunca ficam com o julgamento.",
     method_intro:"Qualquer um consegue pedir código a uma IA. O difícil é confiar no que volta. A resposta da Red Owl é um livro de regras que a frota executa de verdade:",
-    r1_id:"REGRA 01 — LINHAS DURAS HUMANAS", r1_h:"Dinheiro, acesso, dados pessoais",
+    r1_id:"REGRA 01 - LINHAS DURAS HUMANAS", r1_h:"Dinheiro, acesso, dados pessoais",
     r1_p:"Nenhum agente move dinheiro, toca credencial ou apaga dado pessoal. Nunca. Essas três decisões são de uma pessoa, com registro.",
-    r2_id:"REGRA 02 — GATES ADVERSARIAIS", r2_h:"Refutar antes do merge",
-    r2_p:"Antes de qualquer entrega, um agente independente tenta derrubar o trabalho — em até três passadas. Nada sobe sem um veredito verde que ele não conseguiu refutar.",
-    r3_id:"REGRA 03 — CONTROLES CEGOS", r3_h:"Honeypots em toda auditoria",
-    r3_p:"Auditorias incluem casos plantados que o auditor não reconhece. Esses controles já pegaram um modelo fabricando resultado — e bloquearam. Por isso dá pra confiar nos números.",
-    r4_id:"REGRA 04 — DECISÃO REGISTRADA", r4_h:"ADRs, não achismo",
+    r2_id:"REGRA 02 - GATES ADVERSARIAIS", r2_h:"Refutar antes do merge",
+    r2_p:"Antes de qualquer entrega, um agente independente tenta derrubar o trabalho - em até três passadas. Nada sobe sem um veredito verde que ele não conseguiu refutar.",
+    r3_id:"REGRA 03 - CONTROLES CEGOS", r3_h:"Honeypots em toda auditoria",
+    r3_p:"Auditorias incluem casos plantados que o auditor não reconhece. Esses controles já pegaram um modelo fabricando resultado - e bloquearam. Por isso dá pra confiar nos números.",
+    r4_id:"REGRA 04 - DECISÃO REGISTRADA", r4_h:"ADRs, não achismo",
     r4_p:"Toda decisão de arquitetura vira documento versionado. Agente consulta o registro antes de agir; nada é re-decidido em silêncio.",
     about_label:"A pessoa por trás da coruja",
-    about_p1:"Product owner (PMP) com 15+ anos entre operações do mundo real e produtos digitais — de uma franquia dos Correios com 1.000+ pacotes/dia à construção e operação dos produtos acima.",
+    about_p1:"Product owner (PMP) com 15+ anos entre operações do mundo real e produtos digitais - de uma franquia dos Correios com 1.000+ pacotes/dia à construção e operação dos produtos acima.",
     about_p2:"Selecionado pela Card Trader (Itália), líder global em marketplaces de cartas colecionáveis, pra estabelecer a operação no Brasil. Trilíngue: português, inglês, espanhol.",
-    about_p3:"O estúdio é, de propósito, uma pessoa mais uma frota — o método, aplicado a si mesmo.",
+    about_p3:"O estúdio é, de propósito, uma pessoa mais uma frota - o método, aplicado a si mesmo.",
     glance:"Num relance",
     g1:"Product owner certificado PMP",
     g2:"Frota: agentes Claude + Gemini, governados",
-    g4:"Curitiba, Brasil — remoto pro mundo",
+    g4:"Curitiba, Brasil - remoto pro mundo",
+    footer_copy:"© 2026 Red Owl Software · Curitiba, Brasil",
   },
   es: {
     cta_top:"Empezar una conversación",
     hero_eyebrow:"Un estudio de software agéntico · Curitiba, Brasil",
     hero_h1:"Una persona. Una flota gobernada de agentes de IA. <em>Software en producción.</em>",
-    hero_lede:"Red Owl diseña y opera flotas de agentes de IA que construyen, prueban y auditan productos reales — mientras toda decisión sobre dinero, accesos y datos personales sigue siendo humana.",
+    hero_lede:"Red Owl diseña y opera flotas de agentes de IA que construyen, prueban y auditan productos reales - mientras toda decisión sobre dinero, accesos y datos personales sigue siendo humana.",
     hero_ghost:"Ver los trabajos",
-    log_title:"guardia nocturna — log de la flota", log_live:"● de guardia",
+    log_title:"guardia nocturna - log de la flota", log_live:"● de guardia",
     svc_label:"Trabajo para clientes",
     svc_h2:"Lo que el estudio hace por tu empresa.",
     svc1_h:"Automatización agéntica, con gobernanza",
-    svc1_p:"Flotas de agentes de IA haciendo trabajo operativo real en tu negocio — con el mismo reglamento que usamos aquí: líneas duras humanas, gates adversariales, salida auditable.",
+    svc1_p:"Flotas de agentes de IA haciendo trabajo operativo real en tu negocio - con el mismo reglamento que usamos aquí: líneas duras humanas, gates adversariales, salida auditable.",
     svc2_h:"Pipelines de datos y reconciliación",
-    svc2_p:"Recolectar, limpiar y cruzar datos desordenados de múltiples fuentes en un catálogo confiable — matching determinístico, auditorías con controles ciegos, precisión medible.",
+    svc2_p:"Recolectar, limpiar y cruzar datos desordenados de múltiples fuentes en un catálogo confiable - matching determinístico, auditorías con controles ciegos, precisión medible.",
     svc3_h:"Commerce headless y re-plataformas",
     svc3_p:"Salir de stacks legados de e-commerce (Magento y similares) sin detener la operación. Hicimos el camino completo primero en nuestro propio producto.",
     svc4_h:"Entrada al mercado de Brasil",
-    svc4_p:"Facturación (NF-e), logística (Correios), split de pagos, integraciones de marketplace — la capa operativa que una empresa extranjera necesita para vender de verdad en Brasil.",
-    work_label:"Trabajos — construidos y operados aquí",
+    svc4_p:"Facturación (NF-e), logística (Correios), split de pagos, integraciones de marketplace - la capa operativa que una empresa extranjera necesita para vender de verdad en Brasil.",
+    work_label:"Trabajos - construidos y operados aquí",
     work_h2:"La prueba es producto entregado.",
     job1_chip:"En línea desde 2024",
     job1_tag:"La tecnología detrás de un marketplace de trading cards.",
-    job1_l1:"Re-plataforma completa de Magento — 1,4 millones de líneas de módulos custom y de terceros — a un stack headless, con cero código escrito a mano",
+    job1_l1:"Re-plataforma completa de Magento - 1,4 millones de líneas de módulos custom y de terceros - a un stack headless, con cero código escrito a mano",
     job1_l2:"Catálogo canónico de ~290 mil ítems en 13 líneas de producto, reconciliación multi-fuente determinística",
     job1_l3:"Búsqueda sobre 2,4M de documentos con actualización incremental cada 15 minutos",
     job1_l4:"BI del vendedor: comparación de precios multicanal y repricer por reglas, vendido como producto",
     job1_l5:"Capa Brasil: NF-e, logística Correios, split de pagos, hub de marketplaces",
     job1_l6:"Auditoría visual de catálogo asistida por IA con controles ciegos (honeypots)",
     job2_chip:"En línea",
-    job2_tag:"Verificación de identidad (KYC) contra el fraude en servicios entre personas — concebido, construido y lanzado de punta a punta; en línea en <a href='https://proovoo.com' rel='noopener'>proovoo.com</a>. Prueba de que una app/sitio completo sale de la idea a producción.",
-    conc_t:"La concepción completa del producto — de la idea al aire",
+    job2_tag:"Verificación de identidad (KYC) contra el fraude en servicios entre personas - concebido, construido y lanzado de punta a punta; en línea en <a href='https://proovoo.com' rel='noopener'>proovoo.com</a>. Prueba de que una app/sitio completo sale de la idea a producción.",
+    conc_t:"La concepción completa del producto - de la idea al aire",
     conc1:"Ideación",
     conc2:"3 business cases escritos",
     conc3:"Validación fake-door · 2 audiencias",
@@ -544,7 +531,7 @@ const I18N = {
     conc5:"En línea + motor de crecimiento automatizado",
     job2_l1:"Apps iOS y Android construidas de punta a punta por la flota de agentes",
     job2_l2:"Integración con proveedor de KYC y verificación por OTP",
-    job2_l3:"Validado con tráfico pago real antes del producto completo — dos audiencias ancla",
+    job2_l3:"Validado con tráfico pago real antes del producto completo - dos audiencias ancla",
     job2_l4:"Conversión sin contacto: de la adquisición al registro sin humanos en el medio",
     job2_flow_t:"El motor de marketing 100% automatizado",
     flow1:"Google Ads (certificación de política del nicho)",
@@ -552,7 +539,7 @@ const I18N = {
     flow3:"Registro self-serve · OTP + KYC",
     flow4:"Lifecycle: bienvenida · D+2 · D+5 · win-back",
     flow5:"Analytics (PostHog) realimentando campañas",
-    job2_note:"Todo el funnel corre solo, de punta a punta — una persona lo opera en minutos al día.",
+    job2_note:"Todo el funnel corre solo, de punta a punta - una persona lo opera en minutos al día.",
     job3_chip:"En línea",
     job3_tag:"Producto de datos para subastas inmobiliarias por deuda fiscal en EE. UU.",
     job3_l1:"254 condados de Texas mapeados, con reglas por condado catalogadas",
@@ -567,26 +554,27 @@ const I18N = {
     st4:"documentos de búsqueda, actualización cada 15 min",
     st5:"meta de precisión en datos que tocan precio",
     st6:"líneas de código escritas a mano en la re-plataforma de Magento",
-    proof_note:"Lo último importa: una plataforma Magento entera — 1,4 millones de líneas de módulos custom y de terceros, más de 1 millón solo de PHP — migrada a un stack headless moderno con cada línea implementada por agentes. Dirección, arquitectura y criterios de aceptación por un humano.",
-    method_label:"Reglas de la casa — cómo se gobierna la flota",
+    proof_note:"Lo último importa: una plataforma Magento entera - 1,4 millones de líneas de módulos custom y de terceros, más de 1 millón solo de PHP - migrada a un stack headless moderno con cada línea implementada por agentes. Dirección, arquitectura y criterios de aceptación por un humano.",
+    method_label:"Reglas de la casa - cómo se gobierna la flota",
     method_h2:"Los agentes hacen el trabajo. Nunca se quedan con el juicio.",
     method_intro:"Cualquiera puede pedirle código a una IA. Lo difícil es confiar en lo que vuelve. La respuesta de Red Owl es un reglamento que la flota ejecuta de verdad:",
-    r1_id:"REGLA 01 — LÍNEAS DURAS HUMANAS", r1_h:"Dinero, accesos, datos personales",
+    r1_id:"REGLA 01 - LÍNEAS DURAS HUMANAS", r1_h:"Dinero, accesos, datos personales",
     r1_p:"Ningún agente mueve dinero, toca credenciales ni borra datos personales. Nunca. Esas tres decisiones las toma una persona, con registro.",
-    r2_id:"REGLA 02 — GATES ADVERSARIALES", r2_h:"Refutar antes del merge",
-    r2_p:"Antes de cualquier entrega, un agente independiente intenta tumbar el trabajo — hasta en tres pasadas. Nada sube sin un veredicto verde que no pudo refutar.",
-    r3_id:"REGLA 03 — CONTROLES CIEGOS", r3_h:"Honeypots en cada auditoría",
-    r3_p:"Las auditorías incluyen casos plantados que el auditor no reconoce. Estos controles ya atraparon a un modelo fabricando resultados — y lo bloquearon. Por eso se puede confiar en los números.",
-    r4_id:"REGLA 04 — DECISIONES REGISTRADAS", r4_h:"ADRs, no corazonadas",
+    r2_id:"REGLA 02 - GATES ADVERSARIALES", r2_h:"Refutar antes del merge",
+    r2_p:"Antes de cualquier entrega, un agente independiente intenta tumbar el trabajo - hasta en tres pasadas. Nada sube sin un veredicto verde que no pudo refutar.",
+    r3_id:"REGLA 03 - CONTROLES CIEGOS", r3_h:"Honeypots en cada auditoría",
+    r3_p:"Las auditorías incluyen casos plantados que el auditor no reconoce. Estos controles ya atraparon a un modelo fabricando resultados - y lo bloquearon. Por eso se puede confiar en los números.",
+    r4_id:"REGLA 04 - DECISIONES REGISTRADAS", r4_h:"ADRs, no corazonadas",
     r4_p:"Toda decisión de arquitectura se escribe y se versiona. Los agentes consultan el registro antes de actuar; nada se re-decide en silencio.",
     about_label:"La persona detrás del búho",
-    about_p1:"Product owner (PMP) con 15+ años entre operaciones del mundo real y productos digitales — de una franquicia postal con 1.000+ paquetes/día a construir y operar los productos de arriba.",
+    about_p1:"Product owner (PMP) con 15+ años entre operaciones del mundo real y productos digitales - de una franquicia postal con 1.000+ paquetes/día a construir y operar los productos de arriba.",
     about_p2:"Seleccionado por Card Trader (Italia), líder global en marketplaces de cartas coleccionables, para establecer su operación en Brasil. Trilingüe: portugués, inglés, español.",
-    about_p3:"El estudio es, a propósito, una persona más una flota — el método, aplicado a sí mismo.",
+    about_p3:"El estudio es, a propósito, una persona más una flota - el método, aplicado a sí mismo.",
     glance:"De un vistazo",
     g1:"Product owner certificado PMP",
     g2:"Flota: agentes Claude + Gemini, gobernados",
-    g4:"Curitiba, Brasil — remoto para el mundo",
+    g4:"Curitiba, Brasil - remoto para el mundo",
+    footer_copy:"© 2026 Red Owl Software · Curitiba, Brasil",
   }
 };
 
@@ -617,6 +605,37 @@ let saved = null;
 try{ saved = localStorage.getItem("redowl-lang"); }catch(e){}
 const nav = (navigator.language||"en").toLowerCase();
 applyLang(saved || (nav.startsWith("pt") ? "pt" : nav.startsWith("es") ? "es" : "en"));
+
+/* coruja pixel - logo do PO (Claude Design), sem o galho */
+const OWL_ROWS = [
+  "................",
+  "..TT........TT..",
+  "..BBBBBBBBBBBB..",
+  "..BBBBBBBBBBBB..",
+  "..BWWWBBBBWWWB..",
+  "..BWPWBBBBWPWB..",
+  "..BWWWBKKBWWWB..",
+  "..BBBBBBBBBBBB..",
+  ".DDBBBBBBBBBBDD.",
+  ".DDBBBBBBBBBBDD.",
+  ".DDBBBBBBBBBBDD.",
+  "..DBBBBBBBBBBD..",
+  "..BBBBBBBBBBBB..",
+  "...FF......FF...",
+  "................",
+  "................"
+];
+const OWL_COLORS = {T:"#96231d",B:"#e63a2e",D:"#96231d",W:"#ffffff",P:"#161215",K:"#f0a030",F:"#f0a030"};
+function owlSVG(){
+  let s = "";
+  OWL_ROWS.forEach((row,y)=>{ [...row].forEach((ch,x)=>{ if(ch!=="." && OWL_COLORS[ch]) s+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${OWL_COLORS[ch]}"/>`; }); });
+  return s;
+}
+document.getElementById("owl-mark").innerHTML = owlSVG();
+const fav = document.createElement("link");
+fav.rel = "icon"; fav.type = "image/svg+xml";
+fav.href = "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">${owlSVG()}</svg>`);
+document.head.appendChild(fav);
 </script>
 
 </body>
