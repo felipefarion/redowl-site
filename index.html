@@ -94,19 +94,20 @@
     color:var(--parchment);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
   }
   .log-head .live{color:var(--amber)}
-  .log p{white-space:nowrap;overflow:hidden}
+  .log p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .log .t{color:var(--red);margin-right:8px}
   .log .ok{color:var(--amber)}
   .log .hl{color:var(--parchment)}
   @media (prefers-reduced-motion:no-preference){
     .log p{opacity:0;animation:reveal .01s forwards}
-    .log p:nth-child(2){animation-delay:.25s}
-    .log p:nth-child(3){animation-delay:.65s}
-    .log p:nth-child(4){animation-delay:1.05s}
-    .log p:nth-child(5){animation-delay:1.45s}
-    .log p:nth-child(6){animation-delay:1.85s}
-    .log p:nth-child(7){animation-delay:2.25s}
-    .log p:nth-child(8){animation-delay:2.65s}
+    .log p:nth-child(2){animation-delay:.15s}
+    .log p:nth-child(3){animation-delay:.45s}
+    .log p:nth-child(4){animation-delay:.75s}
+    .log p:nth-child(5){animation-delay:1.05s}
+    .log p:nth-child(6){animation-delay:1.35s}
+    .log p:nth-child(7){animation-delay:1.65s}
+    .log p:nth-child(8){animation-delay:1.95s}
+    .log p:nth-child(9){animation-delay:2.25s}
     @keyframes reveal{to{opacity:1}}
   }
 
