@@ -229,14 +229,14 @@
         <a class="ghost" href="#work" data-i18n="hero_ghost">See the work</a>
       </div>
     </div>
-    <div class="log" role="img" aria-label="A night-watch log of the agent fleet: deploy trains closing, tests passing, an audit catching a fabricated result.">
+    <div class="log" role="img" aria-label="A night-watch log of the agent fleet: deploy trains closing, tests passing, anti-hallucination checks verifying every claim.">
       <div class="log-head"><span data-i18n="log_title">night watch - fleet log</span><span class="live" data-i18n="log_live">● on duty</span></div>
       <p><span class="t">19:19</span>deploy train closed - <span class="ok">15/15 smokes green</span></p>
       <p><span class="t">19:53</span>adversarial gate, pass 3 - <span class="ok">GREEN</span>, merge allowed</p>
       <p><span class="t">20:52</span>blind audit: <span class="hl">23/23 honeypots caught</span></p>
       <p><span class="t">21:22</span>catalog reconciliation - 12,788 rows verified</p>
       <p><span class="t">21:37</span>test suite - <span class="ok">2,225 / 2,225 passing</span></p>
-      <p><span class="t">22:14</span>model fabricated a result → <span class="hl">blocked by control</span></p>
+      <p><span class="t">22:14</span>anti-hallucination check → <span class="hl">all claims verified</span></p>
       <p><span class="t">22:52</span>rollback drill - restore verified</p>
       <p><span class="t">23:30</span>fix shipped: 11,529 records corrected, audited</p>
     </div>
@@ -364,7 +364,7 @@
         <div class="rule">
           <p class="id" data-i18n="r3_id">RULE 03 - BLIND CONTROLS</p>
           <h3 data-i18n="r3_h">Honeypots in every audit</h3>
-          <p data-i18n="r3_p">Audits include planted cases the auditor can't recognize. These controls have caught a model fabricating results - and blocked it. That's why the numbers can be trusted.</p>
+          <p data-i18n="r3_p">Audits include planted cases the auditor can't recognize. This is what prevents agent hallucinations - and why the numbers can be trusted.</p>
         </div>
         <div class="rule">
           <p class="id" data-i18n="r4_id">RULE 04 - DECISIONS ON RECORD</p>
@@ -481,7 +481,7 @@ const I18N = {
     r2_id:"REGRA 02 - GATES ADVERSARIAIS", r2_h:"Refutar antes do merge",
     r2_p:"Antes de qualquer entrega, um agente independente tenta derrubar o trabalho - em até três passadas. Nada sobe sem um veredito verde que ele não conseguiu refutar.",
     r3_id:"REGRA 03 - CONTROLES CEGOS", r3_h:"Honeypots em toda auditoria",
-    r3_p:"Auditorias incluem casos plantados que o auditor não reconhece. Esses controles já pegaram um modelo fabricando resultado - e bloquearam. Por isso dá pra confiar nos números.",
+    r3_p:"Auditorias incluem casos plantados que o auditor não reconhece. É isso que evita alucinação de agentes - e é por isso que dá pra confiar nos números.",
     r4_id:"REGRA 04 - DECISÃO REGISTRADA", r4_h:"ADRs, não achismo",
     r4_p:"Toda decisão de arquitetura vira documento versionado. Agente consulta o registro antes de agir; nada é re-decidido em silêncio.",
     about_label:"A pessoa por trás da coruja",
@@ -563,7 +563,7 @@ const I18N = {
     r2_id:"REGLA 02 - GATES ADVERSARIALES", r2_h:"Refutar antes del merge",
     r2_p:"Antes de cualquier entrega, un agente independiente intenta tumbar el trabajo - hasta en tres pasadas. Nada sube sin un veredicto verde que no pudo refutar.",
     r3_id:"REGLA 03 - CONTROLES CIEGOS", r3_h:"Honeypots en cada auditoría",
-    r3_p:"Las auditorías incluyen casos plantados que el auditor no reconoce. Estos controles ya atraparon a un modelo fabricando resultados - y lo bloquearon. Por eso se puede confiar en los números.",
+    r3_p:"Las auditorías incluyen casos plantados que el auditor no reconoce. Eso es lo que evita alucinaciones de los agentes - y por eso se puede confiar en los números.",
     r4_id:"REGLA 04 - DECISIONES REGISTRADAS", r4_h:"ADRs, no corazonadas",
     r4_p:"Toda decisión de arquitectura se escribe y se versiona. Los agentes consultan el registro antes de actuar; nada se re-decide en silencio.",
     about_label:"La persona detrás del búho",
