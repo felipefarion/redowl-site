@@ -286,7 +286,7 @@
       <div class="log-head"><span data-i18n="log_title">night watch - fleet log</span><span class="live" data-i18n="log_live">● on duty</span></div>
       <p><span class="t">19:19</span>deploy train closed - <span class="ok">15/15 smokes green</span></p>
       <p><span class="t">19:53</span>adversarial gate, pass 3 - <span class="ok">GREEN</span>, merge allowed</p>
-      <p><span class="t">20:52</span>blind audit: <span class="hl">23/23 honeypots caught</span></p>
+      <p><span class="t">20:52</span>blind audit: <span class="hl">23/23 planted decoys caught</span></p>
       <p><span class="t">21:22</span>catalog reconciliation - 12,788 rows verified</p>
       <p><span class="t">21:37</span>test suite - <span class="ok">2,225 / 2,225 passing</span></p>
       <p><span class="t">22:14</span>anti-hallucination check → <span class="hl">all claims verified</span></p>
@@ -346,7 +346,7 @@
           </div>
           <ul>
             <li data-i18n="job1_l2">Deterministic multi-source reconciliation (fuzzy banned) across ~290k items and 13 product lines - precision proven by audit: 1 error found across 48k verified items</li>
-            <li data-i18n="job1_l6">AI-assisted visual catalog auditing with blind controls (honeypots)</li>
+            <li data-i18n="job1_l6">AI-assisted visual catalog auditing, proven against hidden test cases</li>
             <li data-i18n="job1_l4">Seller BI: multi-channel price comparison and a rule-based repricer, sold as a product</li>
             <li data-i18n="job1_l5">Brazil operations layer: NF-e invoicing, Correios logistics, split payments, marketplace hub</li>
           </ul>
@@ -438,12 +438,12 @@
         </div>
         <div class="rule">
           <p class="id" data-i18n="r3_id">RULE 03 - BLIND CONTROLS</p>
-          <h3 data-i18n="r3_h">Honeypots in every audit</h3>
+          <h3 data-i18n="r3_h">Hidden test cases in every audit</h3>
           <p data-i18n="r3_p">Audits include planted cases the auditor can't recognize. This is what prevents agent hallucinations - and why the numbers can be trusted.</p>
         </div>
         <div class="rule">
           <p class="id" data-i18n="r4_id">RULE 04 - DECISIONS ON RECORD</p>
-          <h3 data-i18n="r4_h">ADRs, not vibes</h3>
+          <h3 data-i18n="r4_h">Decisions in writing, not vibes</h3>
           <p data-i18n="r4_p">Every architectural decision is written down and versioned. Agents consult the record before acting; nothing gets silently re-decided.</p>
         </div>
       </div>
@@ -517,7 +517,7 @@ const I18N = {
     job1_l2:"Reconciliação multi-fonte determinística (fuzzy banido) em ~290 mil itens e 13 linhas de produto - precisão provada em auditoria: 1 erro em 48 mil itens verificados",
     job1_l4:"BI do vendedor: comparação de preços multi-canal e repricer por regras, vendido como produto",
     job1_l5:"Camada Brasil: NF-e, logística Correios, split de pagamento, hub de marketplaces",
-    job1_l6:"Auditoria visual de catálogo assistida por IA com controles cegos (honeypots)",
+    job1_l6:"Auditoria visual de catálogo assistida por IA, comprovada com casos-teste ocultos",
     ms1n:"1,4M", ms1l:"linhas migradas pra headless",
     ms2l:"linhas escritas à mão",
     ms3l:"itens no catálogo canônico",
@@ -568,9 +568,9 @@ const I18N = {
     r1_p:"Nenhum agente move dinheiro, toca credencial ou apaga dado pessoal. Nunca. Essas três decisões são de uma pessoa, com registro.",
     r2_id:"REGRA 02 - GATES ADVERSARIAIS", r2_h:"Refutar antes do merge",
     r2_p:"Antes de qualquer entrega, um agente independente tenta derrubar o trabalho - em até três passadas. Nada sobe sem um veredito verde que ele não conseguiu refutar.",
-    r3_id:"REGRA 03 - CONTROLES CEGOS", r3_h:"Honeypots em toda auditoria",
+    r3_id:"REGRA 03 - CONTROLES CEGOS", r3_h:"Casos-teste ocultos em toda auditoria",
     r3_p:"Auditorias incluem casos plantados que o auditor não reconhece. É isso que evita alucinação de agentes - e é por isso que dá pra confiar nos números.",
-    r4_id:"REGRA 04 - DECISÃO REGISTRADA", r4_h:"ADRs, não achismo",
+    r4_id:"REGRA 04 - DECISÃO REGISTRADA", r4_h:"Decisão por escrito, não achismo",
     r4_p:"Toda decisão de arquitetura vira documento versionado. Agente consulta o registro antes de agir; nada é re-decidido em silêncio.",
     about_label:"A pessoa por trás da coruja",
     about_cert:"Com certificação em metodologia de projetos (PMP)",
@@ -607,7 +607,7 @@ const I18N = {
     job1_l2:"Reconciliación multi-fuente determinística (fuzzy prohibido) en ~290 mil ítems y 13 líneas de producto - precisión probada por auditoría: 1 error en 48 mil ítems verificados",
     job1_l4:"BI del vendedor: comparación de precios multicanal y repricer por reglas, vendido como producto",
     job1_l5:"Capa Brasil: NF-e, logística Correios, split de pagos, hub de marketplaces",
-    job1_l6:"Auditoría visual de catálogo asistida por IA con controles ciegos (honeypots)",
+    job1_l6:"Auditoría visual de catálogo asistida por IA, comprobada con casos de prueba ocultos",
     ms1n:"1,4M", ms1l:"líneas migradas a headless",
     ms2l:"líneas escritas a mano",
     ms3l:"ítems en el catálogo canónico",
@@ -658,9 +658,9 @@ const I18N = {
     r1_p:"Ningún agente mueve dinero, toca credenciales ni borra datos personales. Nunca. Esas tres decisiones las toma una persona, con registro.",
     r2_id:"REGLA 02 - GATES ADVERSARIALES", r2_h:"Refutar antes del merge",
     r2_p:"Antes de cualquier entrega, un agente independiente intenta tumbar el trabajo - hasta en tres pasadas. Nada sube sin un veredicto verde que no pudo refutar.",
-    r3_id:"REGLA 03 - CONTROLES CIEGOS", r3_h:"Honeypots en cada auditoría",
+    r3_id:"REGLA 03 - CONTROLES CIEGOS", r3_h:"Casos de prueba ocultos en cada auditoría",
     r3_p:"Las auditorías incluyen casos plantados que el auditor no reconoce. Eso es lo que evita alucinaciones de los agentes - y por eso se puede confiar en los números.",
-    r4_id:"REGLA 04 - DECISIONES REGISTRADAS", r4_h:"ADRs, no corazonadas",
+    r4_id:"REGLA 04 - DECISIONES REGISTRADAS", r4_h:"Decisiones por escrito, no corazonadas",
     r4_p:"Toda decisión de arquitectura se escribe y se versiona. Los agentes consultan el registro antes de actuar; nada se re-decide en silencio.",
     about_label:"La persona detrás del búho",
     about_cert:"Con certificación en metodología de proyectos (PMP)",
