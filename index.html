@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Red Owl Software — an agentic software studio</title>
+<meta name="description" content="Red Owl Software is a one-person studio that ships production software with a governed fleet of AI agents. Products, data pipelines, headless commerce, Brazil market entry.">
+<style>
+  :root{
+    --night:#16100c;
+    --panel:#211712;
+    --panel-2:#1b1410;
+    --parchment:#efe3d2;
+    --dim:#a6907c;
+    --red:#c43b2a;
+    --red-deep:#8e2a1e;
+    --amber:#e8a13d;
+    --line:rgba(239,227,210,.14);
+    --mono:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--night);color:var(--parchment);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--amber);text-decoration:none}
+  a:hover{text-decoration:underline}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- header ---------- */
+  header{border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--parchment)}
+  .brand:hover{text-decoration:none}
+  .wordmark{font-family:var(--serif);font-size:1.15rem;letter-spacing:.02em}
+  .wordmark b{color:var(--red);font-weight:700}
+  .cta{
+    font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;
+    color:var(--night);background:var(--amber);padding:9px 16px;border-radius:3px;
+  }
+  .cta:hover{text-decoration:none;filter:brightness(1.08)}
+
+  /* ---------- owl mark ---------- */
+  .owl{width:34px;height:34px;position:relative;flex:none}
+  .owl .face{position:absolute;inset:0;background:var(--red-deep);border-radius:50% 50% 46% 46%}
+  .owl .eye{
+    position:absolute;top:9px;width:9px;height:9px;border-radius:50%;
+    background:var(--amber);box-shadow:0 0 6px rgba(232,161,61,.55);
+  }
+  .owl .eye.l{left:6px}.owl .eye.r{right:6px}
+  .owl .beak{
+    position:absolute;left:50%;top:17px;width:6px;height:7px;transform:translateX(-50%);
+    background:var(--parchment);clip-path:polygon(50% 100%,0 0,100% 0);opacity:.85;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .owl .eye{animation:blink 7s infinite}
+    .owl .eye.r{animation-delay:.05s}
+    @keyframes blink{0%,94%,100%{transform:scaleY(1)}96%,98%{transform:scaleY(.08)}}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:88px 0 72px}
+  .eyebrow{
+    font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--amber);margin-bottom:20px;
+  }
+  h1{
+    font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,4.6vw,3.4rem);
+    line-height:1.12;letter-spacing:-.01em;margin-bottom:22px;
+  }
+  h1 em{font-style:normal;color:var(--red);}
+  .lede{color:var(--dim);max-width:44ch;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .ghost{
+    font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;color:var(--parchment);
+    border:1px solid var(--line);padding:9px 16px;border-radius:3px;
+  }
+  .ghost:hover{border-color:var(--amber);text-decoration:none}
+
+  /* the night-watch log — signature element */
+  .log{
+    background:var(--panel);border:1px solid var(--line);border-radius:6px;
+    font-family:var(--mono);font-size:.78rem;line-height:1.9;color:var(--dim);
+    padding:18px 20px 22px;box-shadow:0 24px 60px rgba(0,0,0,.45);
+  }
+  .log-head{
+    display:flex;justify-content:space-between;gap:12px;
+    border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:12px;
+    color:var(--parchment);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .log-head .live{color:var(--amber)}
+  .log p{white-space:nowrap;overflow:hidden}
+  .log .t{color:var(--red);margin-right:8px}
+  .log .ok{color:var(--amber)}
+  .log .hl{color:var(--parchment)}
+  @media (prefers-reduced-motion:no-preference){
+    .log p{opacity:0;animation:reveal .01s forwards}
+    .log p:nth-child(2){animation-delay:.25s}
+    .log p:nth-child(3){animation-delay:.65s}
+    .log p:nth-child(4){animation-delay:1.05s}
+    .log p:nth-child(5){animation-delay:1.45s}
+    .log p:nth-child(6){animation-delay:1.85s}
+    .log p:nth-child(7){animation-delay:2.25s}
+    .log p:nth-child(8){animation-delay:2.65s}
+    @keyframes reveal{to{opacity:1}}
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  .sec-label{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--red);margin-bottom:14px;
+  }
+  h2{
+    font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);
+    line-height:1.2;margin-bottom:14px;max-width:26ch;
+  }
+  .sec-intro{color:var(--dim);max-width:62ch;margin-bottom:40px}
+
+  /* rules (method) */
+  .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .rule{background:var(--panel-2);padding:26px 26px 30px}
+  .rule .id{font-family:var(--mono);font-size:.72rem;color:var(--amber);letter-spacing:.12em;margin-bottom:12px}
+  .rule h3{font-family:var(--serif);font-weight:600;font-size:1.06rem;margin-bottom:8px}
+  .rule p{color:var(--dim);font-size:.92rem}
+
+  /* proof strip */
+  .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .stat{background:var(--panel-2);padding:22px 24px}
+  .stat .n{font-family:var(--serif);font-size:1.7rem;color:var(--parchment)}
+  .stat .n span{color:var(--amber)}
+  .stat .d{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-top:6px}
+  .proof-note{font-size:.85rem;color:var(--dim);margin-top:14px}
+
+  /* products */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{border:1px solid var(--line);border-radius:6px;padding:26px;background:var(--panel-2);display:flex;flex-direction:column;gap:10px}
+  .card .status{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+  .card h3{font-family:var(--serif);font-weight:600;font-size:1.15rem}
+  .card p{color:var(--dim);font-size:.92rem;flex:1}
+
+  /* services */
+  .svc{display:grid;grid-template-columns:1fr 1fr;gap:36px 48px}
+  .svc article{border-top:2px solid var(--red);padding-top:16px}
+  .svc h3{font-family:var(--serif);font-weight:600;font-size:1.1rem;margin-bottom:8px}
+  .svc p{color:var(--dim);font-size:.93rem}
+
+  /* about + contact */
+  .about{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start}
+  .about p{color:var(--dim);margin-bottom:14px;max-width:58ch}
+  .about p.first{color:var(--parchment)}
+  .aside{
+    border:1px solid var(--line);border-radius:6px;background:var(--panel-2);
+    padding:24px;font-size:.9rem;color:var(--dim);
+  }
+  .aside .id{font-family:var(--mono);font-size:.72rem;color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+  .aside ul{list-style:none}
+  .aside li{padding:7px 0;border-bottom:1px solid var(--line)}
+  .aside li:last-child{border-bottom:0}
+
+  footer{border-top:1px solid var(--line);padding:44px 0 60px}
+  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+  .foot small{color:var(--dim);font-size:.8rem}
+  .langs{font-family:var(--mono);font-size:.75rem;color:var(--dim);letter-spacing:.08em}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;gap:40px;padding:56px 0}
+    .rules,.proof,.cards{grid-template-columns:1fr 1fr}
+    .svc,.about{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .rules,.proof,.cards{grid-template-columns:1fr}
+    .log{font-size:.7rem}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Red Owl Software — home">
+      <span class="owl" aria-hidden="true"><span class="face"></span><span class="eye l"></span><span class="eye r"></span><span class="beak"></span></span>
+      <span class="wordmark"><b>Red Owl</b> Software</span>
+    </a>
+    <a class="cta" href="mailto:felipefarion@gmail.com">Start a conversation</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">An agentic software studio · Curitiba, Brazil</p>
+      <h1>One person. A governed fleet of AI agents. <em>Production software.</em></h1>
+      <p class="lede">Red Owl designs and runs fleets of AI agents that build, test and audit real products — while every decision about money, access and personal data stays human.</p>
+      <div class="hero-actions">
+        <a class="cta" href="mailto:felipefarion@gmail.com">felipefarion@gmail.com</a>
+        <a class="ghost" href="#work">See the work</a>
+      </div>
+    </div>
+    <div class="log" role="img" aria-label="A night-watch log of the agent fleet: deploy trains closing, tests passing, an audit catching a fabricated result.">
+      <div class="log-head"><span>night watch — fleet log</span><span class="live">● on duty</span></div>
+      <p><span class="t">19:19</span>deploy train closed — <span class="ok">15/15 smokes green</span></p>
+      <p><span class="t">19:53</span>adversarial gate, pass 3 — <span class="ok">GREEN</span>, merge allowed</p>
+      <p><span class="t">20:52</span>blind audit: <span class="hl">23/23 honeypots caught</span></p>
+      <p><span class="t">21:22</span>catalog reconciliation — 12,788 rows verified</p>
+      <p><span class="t">21:37</span>test suite — <span class="ok">2,225 / 2,225 passing</span></p>
+      <p><span class="t">22:14</span>model fabricated a result → <span class="hl">blocked by control</span></p>
+      <p><span class="t">22:52</span>rollback drill — restore verified</p>
+      <p><span class="t">23:30</span>fix shipped: 11,529 records corrected, audited</p>
+    </div>
+  </div>
+
+  <section id="method">
+    <div class="wrap">
+      <p class="sec-label">House rules — how the fleet is governed</p>
+      <h2>Agents do the work. They never get the judgment.</h2>
+      <p class="sec-intro">Anyone can prompt an AI to write code. The hard part is trusting what comes back. Red Owl's answer is a written rulebook the fleet actually runs on:</p>
+      <div class="rules">
+        <div class="rule">
+          <p class="id">RULE 01 — HUMAN HARD LINES</p>
+          <h3>Money, access, personal data</h3>
+          <p>No agent moves money, touches credentials or deletes personal data. Ever. Those three calls are made by a person, on the record.</p>
+        </div>
+        <div class="rule">
+          <p class="id">RULE 02 — ADVERSARIAL GATES</p>
+          <h3>Refute before merge</h3>
+          <p>Before work ships, an independent agent tries to tear it apart — up to three passes. Nothing merges without a green verdict it failed to refute.</p>
+        </div>
+        <div class="rule">
+          <p class="id">RULE 03 — BLIND CONTROLS</p>
+          <h3>Honeypots in every audit</h3>
+          <p>Audits include planted cases the auditor can't recognize. These controls have caught a model fabricating results — and blocked it. That's why the numbers can be trusted.</p>
+        </div>
+        <div class="rule">
+          <p class="id">RULE 04 — DECISIONS ON RECORD</p>
+          <h3>ADRs, not vibes</h3>
+          <p>Every architectural decision is written down and versioned. Agents consult the record before acting; nothing gets silently re-decided.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proof">
+    <div class="wrap">
+      <p class="sec-label">Measured on a typical day</p>
+      <h2>The operation, in numbers.</h2>
+      <div class="proof">
+        <div class="stat"><p class="n">2,200<span>+</span></p><p class="d">automated tests green, daily</p></div>
+        <div class="stat"><p class="n">~30</p><p class="d">parallel workstreams, one director</p></div>
+        <div class="stat"><p class="n">290k</p><p class="d">canonical catalog items, 13 product lines</p></div>
+        <div class="stat"><p class="n">2.4M</p><p class="d">search documents, 15-min updates</p></div>
+        <div class="stat"><p class="n">99.99<span>%</span></p><p class="d">precision target on price-adjacent data</p></div>
+        <div class="stat"><p class="n">0</p><p class="d">lines of hand-written code in a full Magento re-platform</p></div>
+      </div>
+      <p class="proof-note">That last one matters: an entire Magento platform (~140k lines of inherited custom code) migrated to a modern headless stack with every line implemented by agents — direction, architecture and acceptance criteria by a human.</p>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <p class="sec-label">Products under the umbrella</p>
+      <h2>Built here, run here.</h2>
+      <div class="cards">
+        <div class="card">
+          <p class="status">Live business since 2024</p>
+          <h3>Magus platform</h3>
+          <p>The technology behind a trading-card marketplace: a 290k-item canonical catalog, multi-source price reconciliation and seller BI. The full headless re-platform (Next.js, GraphQL BFF, Elasticsearch) is in final staging, built entirely by the fleet.</p>
+        </div>
+        <div class="card">
+          <p class="status">In market validation</p>
+          <h3>ProoVoo</h3>
+          <p>Identity verification (KYC) against fraud in person-to-person services. Validated with real paid traffic before full build; iOS and Android apps submitted to the stores.</p>
+        </div>
+        <div class="card">
+          <p class="status">Public proof of concept</p>
+          <h3>Tax Deed Support</h3>
+          <p>A data product for US tax-deed auctions: 254 Texas counties mapped, per-county rules, deed OCR via multimodal AI, property valuation via market APIs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="sec-label">Client work</p>
+      <h2>What the studio does for other companies.</h2>
+      <div class="svc">
+        <article>
+          <h3>Agentic automation, with governance</h3>
+          <p>Fleets of AI agents doing real operational work in your business — with the same rulebook above: human hard lines, adversarial gates, auditable output.</p>
+        </article>
+        <article>
+          <h3>Data pipelines &amp; reconciliation</h3>
+          <p>Collecting, cleaning and matching messy multi-source data into one trustworthy catalog — deterministic matching, blind-control audits, precision you can measure.</p>
+        </article>
+        <article>
+          <h3>Headless commerce &amp; re-platforms</h3>
+          <p>Getting off legacy e-commerce stacks (Magento and friends) without stopping the operation. We have done the full journey on our own product first.</p>
+        </article>
+        <article>
+          <h3>Brazil market entry</h3>
+          <p>Tax invoicing (NF-e), logistics (Correios), split payments, marketplace integrations — the operational layer a foreign company needs to actually sell in Brazil.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <p class="sec-label">The person behind the owl</p>
+        <h2>Felipe Farion</h2>
+        <p class="first">Product manager (PMP) with 15+ years across real-world operations and digital product — from running a postal franchise moving 1,000+ packages a day to building and operating the products above.</p>
+        <p>Selected by Card Trader (Italy), the global leader in collectible-card marketplaces, to establish its operation in Brazil. Trilingual: Portuguese, English, Spanish.</p>
+        <p>The studio is deliberately one person plus a fleet — the method, applied to itself.</p>
+      </div>
+      <div class="aside">
+        <p class="id">At a glance</p>
+        <ul>
+          <li>PMP-certified product manager</li>
+          <li>3 products under the umbrella</li>
+          <li>Fleet: Claude + Gemini agents, governed</li>
+          <li>PT · EN · ES</li>
+          <li>Curitiba, Brazil — remote worldwide</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <p class="wordmark"><b>Red Owl</b> Software</p>
+      <small>© 2026 Red Owl Software · Curitiba, Brazil</small>
+    </div>
+    <div>
+      <a class="cta" href="mailto:felipefarion@gmail.com">felipefarion@gmail.com</a>
+    </div>
+    <p class="langs">Falamos português. Hablamos español.</p>
+  </div>
+</footer>
+
+</body>
+</html>
