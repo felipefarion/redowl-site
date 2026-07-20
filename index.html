@@ -7,16 +7,16 @@
 <meta name="description" content="Red Owl Software is a one-person studio that ships production software with a governed fleet of AI agents. Products, data pipelines, headless commerce, Brazil market entry.">
 <style>
   :root{
-    /* paleta VIVID do trio original (PO): noite quente #100708, vermelho #FF3B2F, ambar #FFB020 */
-    --night:#100708;
-    --panel:#221114;
-    --panel-2:#1a0c0e;
-    --parchment:#fff3e0;
-    --dim:#c2a893;
+    /* paleta VIVID NEUTRA (PO): neutros frios #0B0B0E, vermelho #FF3B2F, ouro #FFC400 - sem terracota/marrom */
+    --night:#0b0b0e;
+    --panel:#1a1a1f;
+    --panel-2:#141418;
+    --parchment:#f7f7f9;
+    --dim:#a3a3ad;
     --red:#ff3b2f;
-    --red-deep:#b3241a;
-    --amber:#ffb020;
-    --line:rgba(255,243,224,.16);
+    --red-deep:#c22417;
+    --amber:#ffc400;
+    --line:rgba(247,247,249,.14);
     --mono:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace;
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
@@ -719,7 +719,7 @@ const OWL_ROWS = [
   "................",
   "................"
 ];
-const OWL_COLORS = {T:"#b3241a",B:"#ff3b2f",D:"#b3241a",W:"#ffffff",P:"#100708",K:"#ffb020",F:"#ffb020"};
+const OWL_COLORS = {T:"#c22417",B:"#ff3b2f",D:"#c22417",W:"#ffffff",P:"#0b0b0e",K:"#ffc400",F:"#ffc400"};
 function owlSVG(){
   let s = "";
   OWL_ROWS.forEach((row,y)=>{ [...row].forEach((ch,x)=>{ if(ch!=="." && OWL_COLORS[ch]) s+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${OWL_COLORS[ch]}"/>`; }); });
