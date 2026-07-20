@@ -2,21 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="color-scheme" content="dark">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Red Owl Software - an agentic software studio</title>
 <meta name="description" content="Red Owl Software is a one-person studio that ships production software with a governed fleet of AI agents. Products, data pipelines, headless commerce, Brazil market entry.">
 <style>
-  :root{
-    /* paleta VIVID NEUTRA (PO): neutros frios #0B0B0E, vermelho #FF3B2F, ouro #FFC400 - sem terracota/marrom */
-    --night:#0b0b0e;
-    --panel:#1a1a1f;
-    --panel-2:#141418;
-    --parchment:#f7f7f9;
-    --dim:#a3a3ad;
-    --red:#ff3b2f;
-    --red-deep:#c22417;
-    --amber:#ffc400;
-    --line:rgba(247,247,249,.14);
+  
+:root{color-scheme:dark;
+    /* paleta ColorHunt (PO): #FF204E / #A0153E / #5D0E41 / #00224D + color-scheme dark anti-inversao */
+    --night:#00224d;
+    --panel:#5d0e41;
+    --panel-2:#520c39;
+    --parchment:#f2f4fa;
+    --dim:#93a1bd;
+    --red:#ff204e;
+    --red-deep:#a0153e;
+    --amber:#ff7d9d;
+    --line:rgba(242,244,250,.16);
     --mono:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace;
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
@@ -171,8 +173,8 @@
 
   /* featured job (Primeira Terça) - newspaper masthead flair */
   .job.featured{
-    border-color:rgba(255,59,47,.5);
-    background:linear-gradient(180deg,rgba(255,59,47,.07),transparent 42%),var(--panel-2);
+    border-color:rgba(255,32,78,.45);
+    background:linear-gradient(180deg,rgba(255,32,78,.06),transparent 42%),var(--panel-2);
   }
   .masthead{
     text-align:center;border-top:3px double var(--line);border-bottom:2px solid var(--line);
@@ -719,7 +721,7 @@ const OWL_ROWS = [
   "................",
   "................"
 ];
-const OWL_COLORS = {T:"#c22417",B:"#ff3b2f",D:"#c22417",W:"#ffffff",P:"#0b0b0e",K:"#ffc400",F:"#ffc400"};
+const OWL_COLORS = {T:"#a0153e",B:"#ff204e",D:"#a0153e",W:"#ffffff",P:"#00224d",K:"#ff7d9d",F:"#ff7d9d"};
 function owlSVG(){
   let s = "";
   OWL_ROWS.forEach((row,y)=>{ [...row].forEach((ch,x)=>{ if(ch!=="." && OWL_COLORS[ch]) s+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${OWL_COLORS[ch]}"/>`; }); });
