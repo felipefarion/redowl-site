@@ -323,16 +323,28 @@
       <h2 data-i18n="work_h2">The proof is shipped product.</h2>
       <div class="work">
 
-        <div class="job">
+        <div class="job featured">
           <div class="job-top"><h3>Magus platform</h3><span class="chip" data-i18n="job1_chip">Live since 2024</span></div>
           <p class="tag" data-i18n="job1_tag">The technology behind a trading-card marketplace.</p>
+          <div class="job-stats">
+            <div><p class="n" data-i18n="ms1n">1.4M</p><p class="l" data-i18n="ms1l">lines migrated to headless</p></div>
+            <div><p class="n">0</p><p class="l" data-i18n="ms2l">lines written by hand</p></div>
+            <div><p class="n">290k</p><p class="l" data-i18n="ms3l">canonical catalog items</p></div>
+            <div><p class="n" data-i18n="ms4n">2.4M</p><p class="l" data-i18n="ms4l">search docs, 15-min updates</p></div>
+          </div>
+          <p class="flow-title" data-i18n="mf_t">The re-platform, end to end</p>
+          <div class="flow">
+            <span data-i18n="mf1">Magento monolith</span><i>→</i>
+            <span data-i18n="mf2">Strangler Fig sequence</span><i>→</i>
+            <span data-i18n="mf3">Next.js + GraphQL BFF</span><i>→</i>
+            <span data-i18n="mf4">Elasticsearch search</span><i>→</i>
+            <span data-i18n="mf5">Cutover-ready in staging</span>
+          </div>
           <ul>
-            <li data-i18n="job1_l1">Full Magento re-platform - 1.4M lines of custom and third-party module code - to a headless stack, with zero hand-written code</li>
-            <li data-i18n="job1_l2">Canonical catalog of ~290k items across 13 product lines, deterministic multi-source reconciliation</li>
-            <li data-i18n="job1_l3">Search over 2.4M documents with 15-minute incremental updates</li>
+            <li data-i18n="job1_l2">Deterministic multi-source reconciliation (fuzzy banned) across ~290k items and 13 product lines, with a 99.99% precision target on price data</li>
+            <li data-i18n="job1_l6">AI-assisted visual catalog auditing with blind controls (honeypots)</li>
             <li data-i18n="job1_l4">Seller BI: multi-channel price comparison and a rule-based repricer, sold as a product</li>
             <li data-i18n="job1_l5">Brazil operations layer: NF-e invoicing, Correios logistics, split payments, marketplace hub</li>
-            <li data-i18n="job1_l6">AI-assisted visual catalog auditing with blind controls (honeypots)</li>
           </ul>
         </div>
 
@@ -376,24 +388,11 @@
             <div><p class="n" data-i18n="js3n">1,271</p><p class="l" data-i18n="js3l">property pages live (TX + GA)</p></div>
             <div><p class="n" data-i18n="js4n">&lt;1 wk</p><p class="l" data-i18n="js4l">list to full pages, per new state</p></div>
           </div>
-          <p class="flow-title" data-i18n="dd_t">6-step due diligence, one page, every data point with source and date</p>
-          <div class="flow">
-            <span data-i18n="dd1">Opening bid</span><i>→</i>
-            <span data-i18n="dd2">Official appraisal</span><i>→</i>
-            <span data-i18n="dd3">Map + Street View</span><i>→</i>
-            <span data-i18n="dd4">Flood zone</span><i>→</i>
-            <span data-i18n="dd5">Market estimate</span><i>→</i>
-            <span data-i18n="dd6">Deed (OCR)</span>
-          </div>
-          <p class="flow-title" data-i18n="job3_more">Under the hood</p>
           <ul>
             <li data-i18n="job3_l4">Data is audited, not just filled: sampled pages re-verified against official sources through independent channels; auction bids matched to the cent, zero divergences</li>
-            <li data-i18n="job3_l5">Verification history shipped as UI: hover any data point to see when it was checked, how many times, and by which source</li>
+            <li data-i18n="job3_l5">6-step due diligence on one page, and verification history as UI: hover any data point to see when it was checked and by which source</li>
             <li data-i18n="job3_l6">Registered deeds read by multimodal AI (OCR) to surface the real sale price Texas legally hides (non-disclosure state)</li>
-            <li data-i18n="job3_l7">Re-collection caught a county rescheduling its auction before any user saw the wrong date</li>
-            <li data-i18n="job3_l8">When federal flood-map servers went down mid-build (government shutdown), the pipeline re-routed to independent official mirrors - same data, cross-checked</li>
             <li data-i18n="job3_l9">Deterministic AI assistant: answers only from the database, cites records, says "not covered" instead of guessing</li>
-            <li data-i18n="job3_l10">Newspaper-inspired dual interface - "study edition" for first-timers, "auction edition" for pros - in PT/EN/ES, with a glossary that explains US auction terms through Brazilian analogies</li>
           </ul>
         </div>
 
@@ -512,11 +511,18 @@ const I18N = {
     job1_chip:"No ar desde 2024",
     job1_tag:"A tecnologia por trás de um marketplace de trading cards.",
     job1_l1:"Re-plataforma completa do Magento - 1,4 milhão de linhas de módulos custom e de terceiros - pra stack headless, com zero código escrito à mão",
-    job1_l2:"Catálogo canônico de ~290 mil itens em 13 linhas de produto, reconciliação multi-fonte determinística",
+    job1_l2:"Reconciliação multi-fonte determinística (fuzzy banido) em ~290 mil itens e 13 linhas de produto, com meta de 99,99% de precisão em dado de preço",
     job1_l3:"Busca sobre 2,4M de documentos com atualização incremental a cada 15 minutos",
     job1_l4:"BI do vendedor: comparação de preços multi-canal e repricer por regras, vendido como produto",
     job1_l5:"Camada Brasil: NF-e, logística Correios, split de pagamento, hub de marketplaces",
     job1_l6:"Auditoria visual de catálogo assistida por IA com controles cegos (honeypots)",
+    ms1n:"1,4M", ms1l:"linhas migradas pra headless",
+    ms2l:"linhas escritas à mão",
+    ms3l:"itens no catálogo canônico",
+    ms4n:"2,4M", ms4l:"docs de busca, delta 15 min",
+    mf_t:"A re-plataforma, de ponta a ponta",
+    mf1:"Monólito Magento", mf2:"Sequência Strangler Fig", mf3:"Next.js + BFF GraphQL",
+    mf4:"Busca Elasticsearch", mf5:"Pronto pra cutover, em homologação",
     job2_chip:"No ar",
     job2_tag:"Verificação de identidade (KYC) contra fraude em serviços entre pessoas - concebido, construído e lançado de ponta a ponta; online em <a href='https://proovoo.com' rel='noopener'>proovoo.com</a>. Prova de que um app/site completo sai da ideia à produção.",
     conc_t:"A concepção completa do produto - da ideia ao ar",
@@ -542,7 +548,7 @@ const I18N = {
     job3_l2:"1.271 fichas de imóveis no ar em dois estados (Texas + Geórgia) pro mesmo dia de leilão - da lista à ficha completa em menos de uma semana por estado novo",
     job3_l3:"Due diligence de 6 passos numa página só: lance de abertura, avaliação oficial, mapa/Street View, zona de enchente, estimativa de mercado, escritura - cada dado com fonte e data",
     job3_l4:"Dado auditado, não só preenchido: amostra de fichas re-verificada contra as fontes oficiais por caminhos independentes; lances conferidos ao centavo, zero divergências",
-    job3_l5:"Histórico de verificação virou interface: passe o mouse em qualquer dado e veja quando foi conferido, quantas vezes e por qual fonte",
+    job3_l5:"Due diligence de 6 passos numa página, e histórico de verificação como interface: passe o mouse em qualquer dado e veja quando foi conferido e por qual fonte",
     job3_l6:"Escrituras registradas lidas por IA multimodal (OCR) pra revelar o preço real de venda que o Texas esconde por lei (estado non-disclosure)",
     job3_l7:"A re-coleta detectou um condado reagendando o leilão antes de qualquer usuário ver a data errada",
     job3_l8:"Quando os servidores federais de mapa de enchente caíram no meio do projeto (shutdown), o pipeline re-roteou pra espelhos oficiais independentes - mesmo dado, com verificação cruzada",
@@ -609,11 +615,18 @@ const I18N = {
     job1_chip:"En línea desde 2024",
     job1_tag:"La tecnología detrás de un marketplace de trading cards.",
     job1_l1:"Re-plataforma completa de Magento - 1,4 millones de líneas de módulos custom y de terceros - a un stack headless, con cero código escrito a mano",
-    job1_l2:"Catálogo canónico de ~290 mil ítems en 13 líneas de producto, reconciliación multi-fuente determinística",
+    job1_l2:"Reconciliación multi-fuente determinística (fuzzy prohibido) en ~290 mil ítems y 13 líneas de producto, con meta de 99,99% de precisión en datos de precio",
     job1_l3:"Búsqueda sobre 2,4M de documentos con actualización incremental cada 15 minutos",
     job1_l4:"BI del vendedor: comparación de precios multicanal y repricer por reglas, vendido como producto",
     job1_l5:"Capa Brasil: NF-e, logística Correios, split de pagos, hub de marketplaces",
     job1_l6:"Auditoría visual de catálogo asistida por IA con controles ciegos (honeypots)",
+    ms1n:"1,4M", ms1l:"líneas migradas a headless",
+    ms2l:"líneas escritas a mano",
+    ms3l:"ítems en el catálogo canónico",
+    ms4n:"2,4M", ms4l:"docs de búsqueda, delta 15 min",
+    mf_t:"La re-plataforma, de punta a punta",
+    mf1:"Monolito Magento", mf2:"Secuencia Strangler Fig", mf3:"Next.js + BFF GraphQL",
+    mf4:"Búsqueda Elasticsearch", mf5:"Listo para cutover, en homologación",
     job2_chip:"En línea",
     job2_tag:"Verificación de identidad (KYC) contra el fraude en servicios entre personas - concebido, construido y lanzado de punta a punta; en línea en <a href='https://proovoo.com' rel='noopener'>proovoo.com</a>. Prueba de que una app/sitio completo sale de la idea a producción.",
     conc_t:"La concepción completa del producto - de la idea al aire",
@@ -639,7 +652,7 @@ const I18N = {
     job3_l2:"1.271 fichas de inmuebles en línea en dos estados (Texas + Georgia) para el mismo día de subasta - de la lista a la ficha completa en menos de una semana por estado nuevo",
     job3_l3:"Due diligence de 6 pasos en una sola página: puja de apertura, avalúo oficial, mapa/Street View, zona de inundación, estimación de mercado, escritura - cada dato con fuente y fecha",
     job3_l4:"Datos auditados, no solo completados: muestra de fichas re-verificada contra fuentes oficiales por caminos independientes; pujas conferidas al centavo, cero divergencias",
-    job3_l5:"El historial de verificación es interfaz: al pasar el mouse sobre cualquier dato se ve cuándo se verificó, cuántas veces y con qué fuente",
+    job3_l5:"Due diligence de 6 pasos en una página, e historial de verificación como interfaz: al pasar el mouse se ve cuándo se verificó cada dato y con qué fuente",
     job3_l6:"Escrituras registradas leídas por IA multimodal (OCR) para revelar el precio real de venta que Texas oculta por ley (estado non-disclosure)",
     job3_l7:"La re-recolección detectó a un condado reprogramando su subasta antes de que algún usuario viera la fecha equivocada",
     job3_l8:"Cuando los servidores federales de mapas de inundación cayeron en pleno desarrollo (shutdown), el pipeline se re-ruteó a espejos oficiales independientes - el mismo dato, con verificación cruzada",
