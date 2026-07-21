@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="dark">
+<script>try{if(localStorage.getItem("redowl-theme")==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Primeira Terça - fragmented public records, one decision-ready page | Red Owl Software</title>
+<meta name="description" content="How Red Owl Software's governed AI agent fleet turned scattered US tax-deed auction records into one audited, decision-ready page per property.">
+<style>
+:root{color-scheme:dark;
+  --night:#ff204e; --panel:#a0153e; --panel-2:#a81742; --parchment:#fff0f3; --dim:#ffc9d4;
+  --red:#00224d; --red-deep:#001634; --amber:#fff0f3; --line:rgba(255,240,243,.28);
+  --mono:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
+}
+:root[data-theme="light"]{color-scheme:light;
+  --night:#fff5f7; --panel:#ffffff; --panel-2:#f7e6ec; --parchment:#2a1220; --dim:#6d525e;
+  --red:#ff204e; --amber:#00224d; --line:rgba(42,18,32,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--parchment);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--amber);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+header.topbar{border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;color:var(--parchment)}
+.brand:hover{text-decoration:none}
+.wordmark{font-family:var(--serif);font-size:1.15rem;letter-spacing:.02em}
+.wordmark b{color:var(--red);font-weight:700}
+.bar-right{display:flex;align-items:center;gap:14px}
+.owl-plate{display:inline-flex;background:#00224d;border-radius:8px;padding:5px;flex:none}
+.owl-svg{width:30px;height:30px;flex:none;image-rendering:pixelated}
+.theme-sw{font-family:var(--mono);font-size:.8rem;cursor:pointer;line-height:1;background:transparent;border:1px solid var(--line);border-radius:3px;color:var(--dim);padding:7px 10px}
+.theme-sw:hover{color:var(--amber);border-color:var(--amber)}
+.ghost{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;color:var(--parchment);border:1px solid var(--line);padding:9px 16px;border-radius:3px}
+.ghost:hover{border-color:var(--amber);text-decoration:none}
+
+.case-hero{padding:64px 0 48px;max-width:760px}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:20px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.4vw,3.1rem);line-height:1.14;letter-spacing:-.01em;margin-bottom:20px}
+h1 em{font-style:normal;color:var(--red)}
+.lede{color:var(--dim);font-size:1.05rem;max-width:62ch}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+.sec-label{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.8vw,1.9rem);line-height:1.24;margin-bottom:16px;max-width:38ch}
+.sec-intro{color:var(--dim);max-width:70ch}
+.sec-intro + .sec-intro{margin-top:14px}
+
+.how-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px}
+.how-card{background:var(--panel-2);padding:22px 24px}
+.how-card .id{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--amber);margin-bottom:10px}
+.how-card h3{font-family:var(--serif);font-weight:600;font-size:1.05rem;margin-bottom:8px}
+.how-card p{color:var(--dim);font-size:.92rem}
+.flow-note{color:var(--dim);font-size:.9rem;margin-top:20px;max-width:70ch}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.stat{background:var(--panel-2);padding:22px 24px}
+.stat .n{font-family:var(--serif);font-size:1.7rem;color:var(--parchment)}
+.stat .n span{color:var(--amber)}
+.stat .d{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--dim);text-transform:uppercase;margin-top:6px}
+
+.shot-grid{display:grid;grid-template-columns:1fr;gap:28px;margin-top:8px}
+.shot-grid figure{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel)}
+.shot-grid img{width:100%;display:block}
+.shot-grid figcaption{font-family:var(--mono);font-size:.78rem;color:var(--dim);padding:12px 16px;border-top:1px solid var(--line)}
+
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.rule{background:var(--panel-2);padding:24px 24px 28px}
+.rule .id{font-family:var(--mono);font-size:.7rem;color:var(--amber);letter-spacing:.1em;margin-bottom:10px}
+.rule p{color:var(--dim);font-size:.92rem}
+
+.icon-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line);border-radius:4px;color:var(--amber)}
+.icon-btn svg{width:20px;height:20px;fill:currentColor}
+.icon-btn:hover{border-color:var(--amber);color:var(--red);text-decoration:none}
+.icon-btn::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--line);color:var(--parchment);font-family:var(--mono);font-size:.68rem;padding:5px 9px;border-radius:4px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s}
+.icon-btn:hover::after,.icon-btn:focus-visible::after{opacity:1}
+
+footer{border-top:1px solid var(--line);padding:44px 0 0}
+.foot-case{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.foot-cta{display:flex;flex-direction:column;gap:14px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.case-nav{display:flex;gap:20px;font-family:var(--mono);font-size:.85rem}
+.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding:24px 0 60px}
+.foot small{color:var(--dim);font-size:.8rem}
+
+/* ---- infographic components (theme-var only, no hardcoded color) ---- */
+.flow-title{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:22px 0 10px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.flow span{font-family:var(--mono);font-size:.72rem;line-height:1.5;color:var(--parchment);border:1px solid var(--line);border-radius:4px;padding:8px 10px;background:var(--panel-2)}
+.flow i{align-self:center;color:var(--red);font-style:normal;font-family:var(--mono)}
+.diagram-caption{font-family:var(--mono);font-size:.72rem;color:var(--dim);margin-top:12px;max-width:70ch}
+
+.stage-flow{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;margin-top:8px}
+.stage-flow .stage-box{flex:1 1 200px;border:1px solid var(--line);border-radius:4px;padding:18px;background:var(--panel-2)}
+.stage-flow .stage-box .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.stage-flow .stage-box h4{font-family:var(--serif);font-weight:400;font-size:1.02rem;margin-bottom:6px;color:var(--parchment)}
+.stage-flow .stage-box p{color:var(--dim);font-size:.85rem}
+.stage-flow .stage-arrow{align-self:center;color:var(--red);font-family:var(--mono);font-size:1.2rem;padding:0 2px}
+
+.scale-viz{border:1px solid var(--line);border-radius:6px;padding:24px 26px;background:var(--panel-2);margin-top:8px}
+.scale-viz .scale-label{font-family:var(--mono);font-size:.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;display:flex;justify-content:space-between;margin-bottom:10px}
+.scale-bar{position:relative;height:10px;border-radius:4px;background:var(--line);margin:6px 0 18px}
+.scale-bar .mark{position:absolute;top:-8px;left:.2%;width:2px;height:26px;background:var(--amber)}
+.scale-callout{font-size:.92rem;color:var(--parchment)}
+.scale-callout b{color:var(--amber);font-weight:600}
+
+.cycle-diagram{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:8px}
+.cycle-diagram .ctile{flex:1 1 150px;background:var(--panel-2);padding:20px 16px;text-align:center;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cycle-diagram .ctile:last-child{border-right:0}
+.cycle-diagram .ctile .n{font-family:var(--serif);font-size:1.5rem;color:var(--parchment)}
+.cycle-diagram .ctile .n span{color:var(--amber)}
+.cycle-diagram .ctile .l{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);margin-top:6px}
+.cycle-note{display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--mono);font-size:.7rem;color:var(--amber);letter-spacing:.06em;text-transform:uppercase;padding:12px;border-top:1px dashed var(--line);background:var(--panel-2);width:100%}
+
+.loop-diagram{border:1px solid var(--line);border-radius:6px;padding:24px 26px;background:var(--panel-2);margin-top:8px}
+.loop-diagram .flow{margin-bottom:0}
+.loop-center-label{font-family:var(--mono);font-size:.72rem;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;text-align:center;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+
+.converge{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:8px}
+.converge .src{border:1px solid var(--line);border-radius:4px;padding:14px 8px;text-align:center;background:var(--panel-2);font-family:var(--mono);font-size:.68rem;color:var(--dim);letter-spacing:.02em}
+.converge-arrows{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;color:var(--red);font-family:var(--mono);font-size:1.3rem;margin:4px 0}
+.converge-target{border:1px solid var(--amber);border-radius:6px;padding:20px 24px;text-align:center;background:var(--panel-2)}
+.converge-target h4{font-family:var(--serif);font-size:1.1rem;color:var(--parchment);font-weight:400}
+.converge-target p{color:var(--dim);font-size:.85rem;margin-top:4px}
+
+.step-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.step-strip .step{flex:1 1 150px;border:1px solid var(--line);border-radius:4px;padding:14px;background:var(--panel-2)}
+.step-strip .step .num{font-family:var(--serif);font-size:1.15rem;color:var(--amber);margin-bottom:6px}
+.step-strip .step .lbl{font-family:var(--mono);font-size:.68rem;color:var(--dim);text-transform:uppercase;letter-spacing:.03em;line-height:1.4}
+
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px}
+.grid4 .g4-tile{background:var(--panel-2);padding:20px 16px}
+.grid4 .g4-tile svg{width:26px;height:26px;stroke:var(--amber);fill:none;stroke-width:1.6;margin-bottom:10px}
+.grid4 .g4-tile h4{font-family:var(--serif);font-size:.95rem;color:var(--parchment);margin-bottom:6px;font-weight:600}
+.grid4 .g4-tile p{color:var(--dim);font-size:.82rem}
+
+@media (max-width:860px){
+  .how-grid,.rules{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .stage-flow{flex-direction:column}
+  .stage-flow .stage-arrow{transform:rotate(90deg)}
+  .cycle-diagram{flex-direction:column}
+  .cycle-diagram .ctile{border-right:0}
+  .converge,.converge-arrows,.grid4{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .stats{grid-template-columns:1fr}
+  .converge,.converge-arrows,.grid4{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap bar">
+    <a class="brand" href="../../" aria-label="Red Owl Software - home">
+      <span class="owl-plate" aria-hidden="true"><svg class="owl-svg" id="owl-mark" viewBox="0 0 16 16" shape-rendering="crispEdges"></svg></span>
+      <span class="wordmark"><b>Red Owl</b> Software</span>
+    </a>
+    <div class="bar-right">
+      <a class="ghost" href="../../">Back to Red Owl Software</a>
+      <button type="button" class="theme-sw" id="theme-sw" aria-label="Switch color mode">☀</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap case-hero">
+    <p class="eyebrow">Case 03 · US real-estate data product</p>
+    <h1>Primeira Terça, fragmented public records, <em>one decision-ready page</em></h1>
+    <p class="lede">Tax deed auctions, where a US county sells a property to recover unpaid property tax, are public record, but scattered across thousands of separate county websites in formats that rarely match. Primeira Terça, designed, built and operated end to end by Red Owl's agent fleet, turns that fragmented public record into one audited page a buyer researching from Brazil can act on.</p>
+  </div>
+
+  <section id="challenge">
+    <div class="wrap">
+      <p class="sec-label">The challenge</p>
+      <h2>Turn scattered public records into an audited decision.</h2>
+      <p class="sec-intro">Tax deed data is public, but it is messy: every county publishes it differently, on different sites, in different formats, and often out of date. The challenge was to turn that fragmented public record into something a buyer could actually use to decide, with every figure audited rather than merely filled in, and to do it while researching from Brazil, a market with no local presence on the ground.</p>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="wrap">
+      <p class="sec-label">The approach</p>
+      <h2>Map the whole country first, then go deep county by county.</h2>
+      <p class="sec-intro">Coverage came before depth: all 3,143 US counties were mapped for auction availability and the rules of all 51 jurisdictions (50 states plus Washington, DC) were catalogued, before building out full property pages in the two states where the data pipeline was ready, Texas and Georgia. An AI assistant on the site answers strictly from the property database and cites its source, informing rather than opining: when a question falls outside what is on record, it says so instead of guessing.</p>
+      <p class="flow-title" role="img" aria-label="Governance flow diagram: a human sets direction and acceptance criteria, agents build, an independent agent tries to refute the work, hidden test cases audit the output, then it ships.">How every delivery is governed</p>
+      <div class="flow">
+        <span>Human sets direction &amp; acceptance criteria</span><i>&rarr;</i>
+        <span>Agents build</span><i>&rarr;</i>
+        <span>An independent agent tries to refute</span><i>&rarr;</i>
+        <span>Hidden test cases audit the output</span><i>&rarr;</i>
+        <span>Ship</span>
+      </div>
+      <p class="diagram-caption">Five steps, every time: nothing ships on one agent's say-so.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <p class="sec-label">How it works</p>
+      <h2>Six scattered sources, folded into one page.</h2>
+      <p class="flow-title" role="img" aria-label="Convergence diagram: the county auction listing, the official tax appraisal, the FEMA flood risk map, and the market estimate together with the registered deed, all feed into one decision-ready property page.">Where the data comes from</p>
+      <div class="converge">
+        <div class="src">County auction listing</div>
+        <div class="src">Official tax appraisal (CAD)</div>
+        <div class="src">FEMA flood risk map</div>
+        <div class="src">Market estimate + registered deed</div>
+      </div>
+      <div class="converge-arrows"><span>&darr;</span><span>&darr;</span><span>&darr;</span><span>&darr;</span></div>
+      <div class="converge-target"><h4>One decision-ready property page</h4><p>Every fact on the page carries its source and the date it was checked.</p></div>
+      <p class="diagram-caption">The buyer would otherwise have to visit each of these sources separately, on a different site, in a different format.</p>
+
+      <p class="flow-title" role="img" aria-label="Six numbered steps of due diligence on one page: opening bid, official appraisal, map, flood risk, market estimate, registered deed.">Six-step due diligence, on one page</p>
+      <div class="step-strip">
+        <div class="step"><p class="num">1</p><p class="lbl">Opening bid</p></div>
+        <div class="step"><p class="num">2</p><p class="lbl">Official appraisal</p></div>
+        <div class="step"><p class="num">3</p><p class="lbl">Map</p></div>
+        <div class="step"><p class="num">4</p><p class="lbl">Flood risk</p></div>
+        <div class="step"><p class="num">5</p><p class="lbl">Market estimate</p></div>
+        <div class="step"><p class="num">6</p><p class="lbl">Registered deed</p></div>
+      </div>
+
+      <p class="flow-title">The terms, in plain language</p>
+      <div class="how-grid">
+        <div class="how-card"><p class="id">TAX DEED AUCTION</p><h3>Unpaid tax, sold at auction</h3><p>When a property owner falls behind on property tax, the county can auction the property to recover the debt. The opening bid usually only covers the unpaid tax, not the property's market value.</p></div>
+        <div class="how-card"><p class="id">NON-DISCLOSURE STATE</p><h3>Texas hides the real sale price</h3><p>Texas law does not require the actual final sale price of a past auction to be published, so the number most buyers want is not public by default.</p></div>
+        <div class="how-card"><p class="id">DEED READING BY AI</p><h3>Multimodal AI (image-reading AI)</h3><p>To recover that hidden price, the registered deed itself, a scanned document, is read directly by AI that can read images, not just text.</p></div>
+        <div class="how-card"><p class="id">DETERMINISTIC ASSISTANT</p><h3>Answers only from the record</h3><p>The AI assistant on the site answers only from the property database and always cites its source. When a question falls outside what is on record, it says so instead of guessing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="numbers">
+    <div class="wrap">
+      <p class="sec-label">Numbers</p>
+      <h2>What is mapped, catalogued and live today.</h2>
+      <div class="stats">
+        <div class="stat"><p class="n">3,143</p><p class="d">US counties mapped by auction availability</p></div>
+        <div class="stat"><p class="n">51</p><p class="d">state jurisdictions catalogued, 50 states plus DC</p></div>
+        <div class="stat"><p class="n">1,271</p><p class="d">property pages live, Texas and Georgia</p></div>
+        <div class="stat"><p class="n">&lt;1 wk</p><p class="d">list to full pages, per new state added</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shots">
+    <div class="wrap">
+      <p class="sec-label">Screenshots</p>
+      <h2>The site, as researchers use it today.</h2>
+      <div class="shot-grid">
+        <figure>
+          <img src="../assets/primeira-terca-01-home.png" alt="Primeira Terca home page with a newspaper-style edition and live auction statistics">
+          <figcaption>A newspaper-inspired edition, updated with live auction statistics for the current listing.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/primeira-terca-02-property.png" alt="A property page showing opening bid, value comparison, flood risk and deed information, each with a source and date">
+          <figcaption>A property page: opening bid, value comparison, flood risk, and the deed, each fact carries its source and the date it was checked.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/primeira-terca-03-listing.png" alt="State-by-state coverage map and a searchable listing of properties and auctions">
+          <figcaption>State-by-state coverage and a searchable listing of every property and auction on record.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="verified">
+    <div class="wrap">
+      <p class="sec-label">How it was verified</p>
+      <h2>Why the data can be trusted, not just believed.</h2>
+      <p class="flow-title" role="img" aria-label="Verification loop diagram: sample property pages are rechecked against the official source through an independent channel, bids are matched to the cent, and zero divergences were found. The sampling runs continuously.">The verification loop</p>
+      <div class="loop-diagram">
+        <div class="flow">
+          <span>Sample property pages</span><i>&rarr;</i>
+          <span>Recheck against the official source, an independent channel</span><i>&rarr;</i>
+          <span>Bids matched to the cent</span><i>&rarr;</i>
+          <span>Zero divergences found</span>
+        </div>
+        <p class="loop-center-label">&#8635; sampling runs continuously, not once</p>
+      </div>
+      <div class="rules" style="margin-top:28px">
+        <div class="rule"><p class="id">CHECKED AGAINST THE ORIGINAL</p><p>Sampled property pages are re-verified against official county and market sources through independent channels, not simply re-read from the same feed that filled them in.</p></div>
+        <div class="rule"><p class="id">VERIFICATION AS INTERFACE</p><p>Every data point on a property page carries its source and the date it was last checked. Hovering any data point shows its full verification history.</p></div>
+        <div class="rule"><p class="id">PROVEN UNDER REAL FAILURE</p><p>When a county rescheduled an auction, re-collection caught the change before a user could see the wrong date. When federal flood-map servers went down during a shutdown, official mirrors covered the gap under cross-verification.</p></div>
+        <div class="rule"><p class="id">STATUS TODAY</p><p>Live for the current auction cycle in Texas and Georgia, with national county coverage already mapped for the states that follow.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-case">
+    <div class="foot-cta">
+      <p class="sec-label">Talk about a project like this</p>
+      <div class="hero-actions">
+        <a class="icon-btn" href="mailto:felipefarion@gmail.com" data-tip="felipefarion@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://wa.me/5541992297995" rel="noopener" data-tip="+55 41 99229-7995" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        </a>
+        <a class="ghost" href="../../redowl-portfolio.pdf">Full portfolio (PDF)</a>
+      </div>
+    </div>
+    <nav class="case-nav" aria-label="Other cases">
+      <a href="../proovoo/">&larr; ProoVoo</a>
+      <a href="../magus/">Magus platform &rarr;</a>
+    </nav>
+  </div>
+  <div class="wrap foot">
+    <p class="wordmark"><b>Red Owl</b> Software</p>
+    <small>© 2026 Red Owl Software · Curitiba, Brazil</small>
+  </div>
+</footer>
+
+<script>
+/* theme (persisted; color-scheme follows = anti-inversion in both themes) */
+function applyTheme(t){
+  if(t==="light"){ document.documentElement.setAttribute("data-theme","light"); }
+  else{ document.documentElement.removeAttribute("data-theme"); }
+  const m=document.querySelector('meta[name="color-scheme"]');
+  if(m) m.setAttribute("content", t==="light" ? "light" : "dark");
+  const b=document.getElementById("theme-sw");
+  if(b) b.textContent = t==="light" ? "☾" : "☀";
+  try{ localStorage.setItem("redowl-theme", t); }catch(e){}
+}
+document.getElementById("theme-sw").addEventListener("click", ()=>{
+  applyTheme(document.documentElement.getAttribute("data-theme")==="light" ? "red" : "light");
+});
+let savedTheme = null;
+try{ savedTheme = localStorage.getItem("redowl-theme"); }catch(e){}
+applyTheme(savedTheme==="light" ? "light" : "red");
+
+/* coruja pixel - logo do PO (Claude Design), sem o galho */
+const OWL_ROWS = [
+  "................",
+  "..TT........TT..",
+  "..BBBBBBBBBBBB..",
+  "..BBBBBBBBBBBB..",
+  "..BWWWBBBBWWWB..",
+  "..BWPWBBBBWPWB..",
+  "..BWWWBKKBWWWB..",
+  "..BBBBBBBBBBBB..",
+  ".DDBBBBBBBBBBDD.",
+  ".DDBBBBBBBBBBDD.",
+  ".DDBBBBBBBBBBDD.",
+  "..DBBBBBBBBBBD..",
+  "..BBBBBBBBBBBB..",
+  "...FF......FF...",
+  "................",
+  "................"
+];
+const OWL_COLORS = {T:"#a0153e",B:"#ff204e",D:"#a0153e",W:"#ffffff",P:"#001634",K:"#fff0f3",F:"#fff0f3"};
+function owlSVG(){
+  let s = "";
+  OWL_ROWS.forEach((row,y)=>{ [...row].forEach((ch,x)=>{ if(ch!=="." && OWL_COLORS[ch]) s+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${OWL_COLORS[ch]}"/>`; }); });
+  return s;
+}
+document.getElementById("owl-mark").innerHTML = owlSVG();
+const fav = document.createElement("link");
+fav.rel = "icon"; fav.type = "image/svg+xml";
+fav.href = "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect width="16" height="16" rx="3" fill="#00224d"/>${owlSVG()}</svg>`);
+document.head.appendChild(fav);
+</script>
+
+</body>
+</html>
