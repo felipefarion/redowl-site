@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="color-scheme" content="dark">
+<script>try{if(localStorage.getItem("redowl-theme")==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Red Owl Software - an agentic software studio</title>
 <meta name="description" content="Red Owl Software is a one-person studio that ships production software with a governed fleet of AI agents. Products, data pipelines, headless commerce, Brazil market entry.">
@@ -23,6 +24,24 @@
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
   }
+  /* light mode (visual do PDF claro): papel rosado, vermelho pra enfase, marinho pra acao */
+  :root[data-theme="light"]{color-scheme:light;
+    --night:#fff5f7;
+    --panel:#ffffff;
+    --panel-2:#f7e6ec;
+    --parchment:#2a1220;
+    --dim:#6d525e;
+    --red:#ff204e;
+    --amber:#00224d;
+    --line:rgba(42,18,32,.16);
+  }
+  :root[data-theme="light"] .log{box-shadow:0 24px 60px rgba(42,18,32,.14)}
+  .theme-sw{
+    font-family:var(--mono);font-size:.8rem;cursor:pointer;line-height:1;
+    background:transparent;border:1px solid var(--line);border-radius:3px;
+    color:var(--dim);padding:7px 10px;
+  }
+  .theme-sw:hover{color:var(--amber);border-color:var(--amber)}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
@@ -261,6 +280,7 @@
         <button type="button" data-lang="pt">PT</button>
         <button type="button" data-lang="es">ES</button>
       </div>
+      <button type="button" class="theme-sw" id="theme-sw" aria-label="Switch color mode">☀</button>
       <a class="cta" href="mailto:felipefarion@gmail.com" data-i18n="cta_top">Start a conversation</a>
     </div>
   </div>
@@ -702,6 +722,23 @@ let saved = null;
 try{ saved = localStorage.getItem("redowl-lang"); }catch(e){}
 const nav = (navigator.language||"en").toLowerCase();
 applyLang(saved || (nav.startsWith("pt") ? "pt" : nav.startsWith("es") ? "es" : "en"));
+
+/* light mode (persistido; color-scheme acompanha = anti-inversao nos 2 temas) */
+function applyTheme(t){
+  if(t==="light"){ document.documentElement.setAttribute("data-theme","light"); }
+  else{ document.documentElement.removeAttribute("data-theme"); }
+  const m=document.querySelector('meta[name="color-scheme"]');
+  if(m) m.setAttribute("content", t==="light" ? "light" : "dark");
+  const b=document.getElementById("theme-sw");
+  if(b) b.textContent = t==="light" ? "☾" : "☀";
+  try{ localStorage.setItem("redowl-theme", t); }catch(e){}
+}
+document.getElementById("theme-sw").addEventListener("click", ()=>{
+  applyTheme(document.documentElement.getAttribute("data-theme")==="light" ? "red" : "light");
+});
+let savedTheme = null;
+try{ savedTheme = localStorage.getItem("redowl-theme"); }catch(e){}
+applyTheme(savedTheme==="light" ? "light" : "red");
 
 /* coruja pixel - logo do PO (Claude Design), sem o galho */
 const OWL_ROWS = [
