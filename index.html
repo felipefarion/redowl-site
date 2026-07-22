@@ -39,7 +39,8 @@
   .theme-sw{
     font-family:var(--mono);font-size:.8rem;cursor:pointer;line-height:1;
     background:transparent;border:1px solid var(--line);border-radius:3px;
-    color:var(--dim);padding:7px 10px;
+    color:var(--dim);padding:10px 12px;
+    display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;
   }
   .theme-sw:hover{color:var(--amber);border-color:var(--amber)}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -65,7 +66,8 @@
   .langs-sw{display:flex;gap:2px;border:1px solid var(--line);border-radius:3px;overflow:hidden}
   .langs-sw button{
     font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;cursor:pointer;
-    background:transparent;border:0;color:var(--dim);padding:7px 9px;
+    background:transparent;border:0;color:var(--dim);padding:10px 12px;
+    display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;
   }
   .langs-sw button.on{background:var(--amber);color:var(--night)}
   .cta{
@@ -100,7 +102,7 @@
   /* contact icon buttons with hover tooltip */
   .icon-btn{
     position:relative;display:inline-flex;align-items:center;justify-content:center;
-    width:42px;height:42px;border:1px solid var(--line);border-radius:4px;color:var(--amber);
+    width:44px;height:44px;border:1px solid var(--line);border-radius:4px;color:var(--amber);
   }
   .icon-btn svg{width:20px;height:20px;fill:currentColor}
   .icon-btn:hover{border-color:var(--amber);color:var(--red);text-decoration:none}
@@ -264,6 +266,54 @@
     .rules,.proof{grid-template-columns:1fr}
     .log{font-size:.7rem}
   }
+
+  /* ---------- hero reply note (GO PO 21/07) ---------- */
+  .reply-note{font-family:var(--mono);font-size:.75rem;color:var(--dim);margin-top:16px}
+
+  /* ---------- pricing, variante A (GO PO 21/07) ---------- */
+  .pricing-list{list-style:none;max-width:560px}
+  .pricing-list li{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .pricing-list li span:last-child{font-family:var(--mono);color:var(--amber);white-space:nowrap}
+  .pricing-note{font-family:var(--mono);font-size:.75rem;color:var(--dim);margin-top:14px}
+
+  /* ---------- stat band (big numbers, static) ---------- */
+  .statband{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .sb-tile{background:var(--panel-2);padding:22px 20px}
+  .sb-n{font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2rem);color:var(--parchment);line-height:1.05}
+  .sb-l{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);margin-top:8px}
+  .sb-m{font-size:.8rem;color:var(--dim);margin-top:8px;line-height:1.4}
+  @media (max-width:860px){.statband{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.statband{grid-template-columns:1fr}}
+  /* entrada suave, NAO count-up; desligada sob reduced-motion */
+  @media (prefers-reduced-motion:no-preference){
+    .sb-tile{opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .4s ease}
+    .sb-tile.in{opacity:1;transform:none}
+  }
+
+  /* ---------- before/after label chips (inline variant, inside .flow) ---------- */
+  .ba-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+  .flow-tag{align-self:center;border:0;background:transparent;padding:0 2px}
+  .ba-after-tag{color:var(--amber)}
+
+  /* ---------- contact block (home + cases) ---------- */
+  .contact-block{text-align:left}
+  .contact-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+  .contact-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:4px;font-family:var(--mono);font-size:.85rem;letter-spacing:.04em;color:var(--night);background:var(--amber);border:1px solid var(--amber)}
+  .contact-btn:hover{text-decoration:none;filter:brightness(1.08)}
+  .contact-btn.secondary{color:var(--parchment);background:transparent;border-color:var(--line)}
+  .contact-btn.secondary:hover{border-color:var(--amber);filter:none}
+
+  /* ---------- sticky CTA (mobile only) ---------- */
+  .sticky-cta{display:none}
+  @media (max-width:760px){
+    .sticky-cta{display:grid;grid-template-columns:1fr 1fr;gap:1px;position:fixed;left:0;right:0;bottom:0;z-index:50;
+      background:var(--line);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+    .sticky-cta a{display:flex;align-items:center;justify-content:center;min-height:54px;background:var(--panel);
+      color:var(--amber);font-family:var(--mono);font-size:.85rem;letter-spacing:.05em}
+    .sticky-cta a:first-child{color:var(--night);background:var(--amber)}
+    .sticky-cta a:hover{text-decoration:none}
+    body{padding-bottom:64px}
+  }
 </style>
 </head>
 <body>
@@ -281,7 +331,7 @@
         <button type="button" data-lang="es">ES</button>
       </div>
       <button type="button" class="theme-sw" id="theme-sw" aria-label="Switch color mode">☀</button>
-      <a class="cta" href="mailto:felipefarion@gmail.com" data-i18n="cta_top">Start a conversation</a>
+      <a class="cta" href="mailto:felipefarion@gmail.com?subject=Project%20inquiry%20-%20redowl-site" data-i18n="cta_top">Start a project</a>
     </div>
   </div>
 </header>
@@ -290,30 +340,60 @@
   <div class="wrap hero">
     <div>
       <p class="eyebrow" data-i18n="hero_eyebrow">An agentic software studio · Curitiba, Brazil</p>
-      <h1 data-i18n-html="hero_h1">One person. A governed fleet of AI agents. <em>Production software.</em></h1>
-      <p class="lede" data-i18n="hero_lede">Red Owl designs and runs fleets of AI agents that build, test and audit real products - while every decision about money, access and personal data stays human.</p>
+      <h1 data-i18n-html="hero_h1">Agents do the work. <em>The judgment stays human.</em></h1>
+      <p class="lede" data-i18n="hero_lede">One person, a governed fleet of AI agents that build, test and audit real software - while every decision about money, access and personal data stays human.</p>
       <div class="hero-actions">
-        <a class="icon-btn" href="mailto:felipefarion@gmail.com" data-tip="felipefarion@gmail.com" aria-label="Email">
+        <a class="icon-btn" href="mailto:felipefarion@gmail.com?subject=Project%20inquiry%20-%20redowl-site" data-tip="felipefarion@gmail.com" aria-label="Email">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </a>
-        <a class="icon-btn" href="https://wa.me/5541992297995" rel="noopener" data-tip="+55 41 99229-7995" aria-label="WhatsApp">
+        <a class="icon-btn" href="https://wa.me/5541992297995?text=Hi%2C%20I%27m%20reaching%20out%20from%20the%20Red%20Owl%20Software%20site.%20I%27d%20like%20to%20talk%20about%20a%20project." rel="noopener" data-tip="+55 41 99229-7995" aria-label="WhatsApp">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
         </a>
         <a class="ghost" href="#work" data-i18n="hero_ghost">See the work</a>
       </div>
+      <!-- GO PO 21/07: linha de resposta ligada -->
+      <p class="reply-note" data-i18n="hero_reply">Typically replies within one business day. Curitiba, Brazil (GMT-3).</p>
     </div>
     <div class="log" role="img" aria-label="A night-watch log of the agent fleet: deploy trains closing, tests passing, anti-hallucination checks verifying every claim.">
       <div class="log-head"><span data-i18n="log_title">night watch - fleet log</span><span class="live" data-i18n="log_live">● on duty</span></div>
       <p><span class="t">19:19</span>deploy train closed - <span class="ok">15/15 smokes green</span></p>
       <p><span class="t">19:53</span>adversarial gate, pass 3 - <span class="ok">GREEN</span>, merge allowed</p>
       <p><span class="t">20:52</span>blind audit: <span class="hl">23/23 planted decoys caught</span></p>
-      <p><span class="t">21:22</span>catalog reconciliation - 12,788 rows verified</p>
+      <p><span class="t">21:22</span>catalog reconciliation - <span class="ok">290k canonical items</span></p>
       <p><span class="t">21:37</span>test suite - <span class="ok">2,225 / 2,225 passing</span></p>
       <p><span class="t">22:14</span>anti-hallucination check → <span class="hl">all claims verified</span></p>
       <p><span class="t">22:52</span>rollback drill - restore verified</p>
-      <p><span class="t">23:30</span>fix shipped: 11,529 records corrected, audited</p>
+      <p><span class="t">23:30</span>search index - <span class="hl">2.4M docs reindexed, 15-min delta</span></p>
     </div>
   </div>
+
+  <section id="facts" aria-labelledby="facts-h">
+    <div class="wrap">
+      <p class="sec-label" id="facts-h" data-i18n="hb_label">Measured facts, not targets</p>
+      <div class="statband">
+        <div class="sb-tile">
+          <p class="sb-n" data-i18n="hb1n">1.4M</p>
+          <p class="sb-l" data-i18n="hb1l">lines migrated to headless</p>
+          <p class="sb-m" data-i18n="hb1m">Agent-authored, human-reviewed. 0 by hand.</p>
+        </div>
+        <div class="sb-tile">
+          <p class="sb-n" data-i18n="hb2n">2,200+</p>
+          <p class="sb-l" data-i18n="hb2l">tests green, daily</p>
+          <p class="sb-m" data-i18n="hb2m">Full suite each build cycle, staging.</p>
+        </div>
+        <div class="sb-tile">
+          <p class="sb-n" data-i18n="hb3n">1 / 48,062</p>
+          <p class="sb-l" data-i18n="hb3l">audited items, one error</p>
+          <p class="sb-m" data-i18n="hb3m">Blind audit, item by item.</p>
+        </div>
+        <div class="sb-tile">
+          <p class="sb-n" data-i18n="hb4n">2.4M</p>
+          <p class="sb-l" data-i18n="hb4l">docs reindexed every 15 min</p>
+          <p class="sb-m" data-i18n="hb4m">Continuous, measured now.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="services">
     <div class="wrap">
@@ -358,11 +438,13 @@
           </div>
           <p class="flow-title" data-i18n="mf_t">The re-platform, end to end</p>
           <div class="flow">
+            <span class="ba-tag flow-tag" data-i18n="ba_before">Before</span>
             <span data-i18n="mf1">Magento monolith</span><i>→</i>
             <span data-i18n="mf2">Strangler Fig sequence</span><i>→</i>
             <span data-i18n="mf3">Next.js + GraphQL BFF</span><i>→</i>
             <span data-i18n="mf4">Elasticsearch search</span><i>→</i>
             <span data-i18n="mf5">Cutover-ready in staging</span>
+            <span class="ba-tag flow-tag ba-after-tag" data-i18n="ba_after">After</span>
           </div>
           <ul>
             <li data-i18n="job1_l2">Deterministic multi-source reconciliation (fuzzy banned) across ~290k items and 13 product lines - precision proven by audit: 1 error found across 48k verified items</li>
@@ -376,6 +458,12 @@
         <div class="job">
           <div class="job-top"><h3>ProoVoo</h3></div>
           <p class="tag" data-i18n-html="job2_tag">Identity verification (KYC) against fraud in person-to-person services - conceived, built and launched end to end; online at <a href="https://proovoo.com" rel="noopener">proovoo.com</a>. Proof that a full app/site ships from the idea to production.</p>
+          <div class="job-stats">
+            <div><p class="n" data-i18n="ps1n">2</p><p class="l" data-i18n="ps1l">anchor audiences validated</p></div>
+            <div><p class="n" data-i18n="ps2n">2</p><p class="l" data-i18n="ps2l">platforms shipped (web + apps)</p></div>
+            <div><p class="n" data-i18n="ps3n">0</p><p class="l" data-i18n="ps3l">humans in the funnel</p></div>
+            <div><p class="n" data-i18n="ps4n">4</p><p class="l" data-i18n="ps4l">protection modes</p></div>
+          </div>
           <ul>
             <li data-i18n="job2_l1">iOS and Android apps built end to end by the agent fleet</li>
             <li data-i18n="job2_l2">KYC provider integration and OTP verification</li>
@@ -384,11 +472,13 @@
           </ul>
           <p class="flow-title" data-i18n="conc_t">Full product conception - from the idea to live</p>
           <div class="flow">
+            <span class="ba-tag flow-tag" data-i18n="ba_before">Before</span>
             <span data-i18n="conc1">Ideation</span><i>→</i>
             <span data-i18n="conc2">3 business cases written</span><i>→</i>
             <span data-i18n="conc3">Fake-door validation · 2 audiences</span><i>→</i>
             <span data-i18n="conc4">Build: iOS/Android apps · KYC · OTP</span><i>→</i>
             <span data-i18n="conc5">Live + automated growth engine</span>
+            <span class="ba-tag flow-tag ba-after-tag" data-i18n="ba_after">After</span>
           </div>
           <p class="flow-title" data-i18n="job2_flow_t">The fully automated marketing engine</p>
           <div class="flow">
@@ -433,7 +523,7 @@
       <h2 data-i18n="proof_h2">The operation, in numbers.</h2>
       <div class="proof">
         <div class="stat"><p class="n">2,200<span>+</span></p><p class="d" data-i18n="st1">automated tests green, daily</p></div>
-        <div class="stat"><p class="n">~30</p><p class="d" data-i18n="st2">parallel workstreams, one director</p></div>
+        <div class="stat"><p class="n">23<span> / 23</span></p><p class="d" data-i18n="st2">planted decoys caught in a blind audit</p></div>
         <div class="stat"><p class="n">290k</p><p class="d" data-i18n="st3">canonical catalog items, 13 product lines</p></div>
         <div class="stat"><p class="n">2.4M</p><p class="d" data-i18n="st4">search documents, 15-min updates</p></div>
         <div class="stat"><p class="n">1<span> / 48k</span></p><p class="d" data-i18n="st5">errors found across 48k audited catalog items</p></div>
@@ -494,6 +584,51 @@
       </div>
     </div>
   </section>
+
+  <!-- GO PO 21/07: bloco de confianca ligado, copy original confirmado pelo PO ("e fiel").
+       Garantias por tipo de entrega (bug 30 dias, gate antes de cobrar, SLA em horas) seguem EXIGINDO GO separado. -->
+  <section id="trust">
+    <div class="wrap">
+      <p class="sec-label" data-i18n="trust_label">If I disappear tomorrow</p>
+      <h2 data-i18n="trust_h2">One person. Not a single point of failure.</h2>
+      <div class="rules">
+        <div class="rule">
+          <p class="id" data-i18n="trust_r1_id">YOU OWN EVERYTHING</p>
+          <p data-i18n="trust_r1_p">Your code lives in your own GitHub from the first commit, never in a personal repo of mine. You own the domain, the API keys, the hosting. Nothing is locked to an account of mine.</p>
+        </div>
+        <div class="rule">
+          <p class="id" data-i18n="trust_r2_id">HANDOFF IN WRITING</p>
+          <p data-i18n="trust_r2_p">The handoff is documented and versioned next to the code, not a PDF only I hold.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GO PO 21/07: preco ligado, variante A (ancora discreta, recomendacao do dossie).
+       Opcao B (3 cards, faixa $120-$550 site / $80-100/hr automacao / pipelines sob escopo) segue disponivel como reserva. -->
+  <section id="pricing">
+    <div class="wrap">
+      <p class="sec-label" data-i18n="pricing_label">Engagements</p>
+      <ul class="pricing-list">
+        <li><span data-i18n="pricing_1_l">Website</span><span data-i18n="pricing_1_v">from $95</span></li>
+        <li><span data-i18n="pricing_2_l">AI agent automation</span><span data-i18n="pricing_2_v">from $80/hr (market rate)</span></li>
+        <li><span data-i18n="pricing_3_l">Data pipelines</span><span data-i18n="pricing_3_v">scoped after a call</span></li>
+      </ul>
+      <p class="pricing-note" data-i18n="pricing_note">Final scope and price set after a short call. No hidden fees.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-block">
+      <h2 data-i18n="contact_h2">Have a project like these?</h2>
+      <p class="sec-intro" data-i18n="contact_p">Tell me what you are building.</p>
+      <p class="reply-note" data-i18n="hero_reply">Typically replies within one business day. Curitiba, Brazil (GMT-3).</p>
+      <div class="contact-actions">
+        <a class="contact-btn" href="mailto:felipefarion@gmail.com?subject=Project%20inquiry%20-%20redowl-site" data-i18n="contact_cta_email">Start a project</a>
+        <a class="contact-btn secondary" href="https://wa.me/5541992297995?text=Hi%2C%20I%27m%20reaching%20out%20from%20the%20Red%20Owl%20Software%20site.%20I%27d%20like%20to%20talk%20about%20a%20project." rel="noopener" data-i18n="contact_cta_wa">Message on WhatsApp</a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -503,10 +638,10 @@
       <small data-i18n="footer_copy">© 2026 Red Owl Software · Curitiba, Brazil</small>
     </div>
     <div style="display:flex;gap:10px">
-      <a class="icon-btn" href="mailto:felipefarion@gmail.com" data-tip="felipefarion@gmail.com" aria-label="Email">
+      <a class="icon-btn" href="mailto:felipefarion@gmail.com?subject=Project%20inquiry%20-%20redowl-site" data-tip="felipefarion@gmail.com" aria-label="Email">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
       </a>
-      <a class="icon-btn" href="https://wa.me/5541992297995" rel="noopener" data-tip="+55 41 99229-7995" aria-label="WhatsApp">
+      <a class="icon-btn" href="https://wa.me/5541992297995?text=Hi%2C%20I%27m%20reaching%20out%20from%20the%20Red%20Owl%20Software%20site.%20I%27d%20like%20to%20talk%20about%20a%20project." rel="noopener" data-tip="+55 41 99229-7995" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
       </a>
     </div>
@@ -514,14 +649,26 @@
   </div>
 </footer>
 
+<div class="sticky-cta" aria-label="Contact">
+  <a href="mailto:felipefarion@gmail.com?subject=Project%20inquiry%20-%20redowl-site" data-i18n="sticky_email">Email</a>
+  <a href="https://wa.me/5541992297995?text=Hi%2C%20I%27d%20like%20to%20talk%20about%20a%20project." rel="noopener" data-i18n="sticky_wa">WhatsApp</a>
+</div>
+
 <script>
 const I18N = {
   pt: {
-    cta_top:"Começar uma conversa",
+    cta_top:"Começar um projeto",
     hero_eyebrow:"Um estúdio de software agêntico · Curitiba, Brasil",
-    hero_h1:"Uma pessoa. Uma frota governada de agentes de IA. <em>Software em produção.</em>",
-    hero_lede:"A Red Owl desenha e opera frotas de agentes de IA que constroem, testam e auditam produtos de verdade - enquanto toda decisão sobre dinheiro, acesso e dados pessoais continua humana.",
+    hero_h1:"Os agentes fazem o trabalho. <em>O julgamento continua humano.</em>",
+    hero_lede:"Uma pessoa, uma frota governada de agentes de IA que constroem, testam e auditam software de verdade - enquanto toda decisão sobre dinheiro, acesso e dados pessoais continua humana.",
+    hero_reply:"Normalmente respondo em até um dia útil. Curitiba, Brasil (GMT-3).",
     hero_ghost:"Ver os trabalhos",
+    hb_label:"Fatos medidos, nunca metas",
+    hb1n:"1,4M", hb1l:"linhas migradas pra headless", hb1m:"Escritas por agente, revisadas por humano. 0 à mão.",
+    hb2n:"2.200+", hb2l:"testes verdes, todo dia", hb2m:"Suite completa a cada ciclo de build, em homologação.",
+    hb3n:"1 / 48.062", hb3l:"itens auditados, um erro", hb3m:"Auditoria cega, item a item.",
+    hb4n:"2,4M", hb4l:"docs reindexados a cada 15 min", hb4m:"Contínuo, medido agora.",
+    ba_before:"Antes", ba_after:"Depois",
     log_title:"vigília - log da frota", log_live:"● de plantão",
     svc_label:"Serviços",
     svc_h2:"O que o estúdio faz pela sua empresa.",
@@ -550,6 +697,10 @@ const I18N = {
     mf1:"Monólito Magento", mf2:"Sequência Strangler Fig", mf3:"Next.js + BFF GraphQL",
     mf4:"Busca Elasticsearch", mf5:"Pronto pra cutover, em homologação",
     job2_tag:"Verificação de identidade (KYC) contra fraude em serviços entre pessoas - concebido, construído e lançado de ponta a ponta; online em <a href='https://proovoo.com' rel='noopener'>proovoo.com</a>. Prova de que um app/site completo sai da ideia à produção.",
+    ps1n:"2", ps1l:"públicos-âncora validados",
+    ps2n:"2", ps2l:"plataformas no ar (web + apps)",
+    ps3n:"0", ps3l:"humanos no funil",
+    ps4n:"4", ps4l:"modos de proteção",
     conc_t:"A concepção completa do produto - da ideia ao ar",
     conc1:"Ideação",
     conc2:"3 business cases escritos",
@@ -579,7 +730,7 @@ const I18N = {
     proof_label:"Medido num dia típico",
     proof_h2:"A operação, em números.",
     st1:"testes automatizados verdes, por dia",
-    st2:"frentes de trabalho em paralelo, uma direção",
+    st2:"iscas plantadas pegas em auditoria às cegas",
     st3:"itens no catálogo canônico, 13 linhas de produto",
     st4:"documentos de busca, atualização em 15 min",
     st5:"erro encontrado em 48 mil itens auditados do catálogo",
@@ -606,13 +757,36 @@ const I18N = {
     g2:"Frota: agentes Claude + Gemini, governados",
     g4:"Curitiba, Brasil - remoto pro mundo",
     footer_copy:"© 2026 Red Owl Software · Curitiba, Brasil",
+    contact_h2:"Tem um projeto como esses?",
+    contact_p:"Me conta o que você está construindo.",
+    contact_cta_email:"Começar um projeto",
+    contact_cta_wa:"Chamar no WhatsApp",
+    sticky_email:"E-mail", sticky_wa:"WhatsApp",
+    trust_label:"Se eu desaparecer amanhã",
+    trust_h2:"Uma pessoa. Não um ponto único de falha.",
+    trust_r1_id:"VOCÊ É DONO DE TUDO",
+    trust_r1_p:"Seu código vive no seu próprio GitHub desde o primeiro commit, nunca num repositório pessoal meu. Você é dono do domínio, das chaves de API, da hospedagem. Nada fica preso a uma conta minha.",
+    trust_r2_id:"HANDOFF POR ESCRITO",
+    trust_r2_p:"O handoff fica documentado e versionado junto do código, não um PDF que só eu tenho.",
+    pricing_label:"Contratos",
+    pricing_1_l:"Site", pricing_1_v:"a partir de US$95",
+    pricing_2_l:"Automação com agentes de IA", pricing_2_v:"a partir de US$80/h (preço de mercado)",
+    pricing_3_l:"Pipelines de dados", pricing_3_v:"escopo fechado após uma call",
+    pricing_note:"Escopo e preço finais definidos após uma call curta. Sem taxa escondida.",
   },
   es: {
-    cta_top:"Empezar una conversación",
+    cta_top:"Empezar un proyecto",
     hero_eyebrow:"Un estudio de software agéntico · Curitiba, Brasil",
-    hero_h1:"Una persona. Una flota gobernada de agentes de IA. <em>Software en producción.</em>",
-    hero_lede:"Red Owl diseña y opera flotas de agentes de IA que construyen, prueban y auditan productos reales - mientras toda decisión sobre dinero, accesos y datos personales sigue siendo humana.",
+    hero_h1:"Los agentes hacen el trabajo. <em>El juicio sigue siendo humano.</em>",
+    hero_lede:"Una persona, una flota gobernada de agentes de IA que construyen, prueban y auditan software real - mientras toda decisión sobre dinero, accesos y datos personales sigue siendo humana.",
+    hero_reply:"Normalmente respondo dentro de un día hábil. Curitiba, Brasil (GMT-3).",
     hero_ghost:"Ver los trabajos",
+    hb_label:"Hechos medidos, no metas",
+    hb1n:"1,4M", hb1l:"líneas migradas a headless", hb1m:"Escritas por agente, revisadas por humano. 0 a mano.",
+    hb2n:"2.200+", hb2l:"tests en verde, todos los días", hb2m:"Suite completa en cada ciclo de build, en homologación.",
+    hb3n:"1 / 48.062", hb3l:"ítems auditados, un error", hb3m:"Auditoría ciega, ítem por ítem.",
+    hb4n:"2,4M", hb4l:"docs reindexados cada 15 min", hb4m:"Continuo, medido ahora.",
+    ba_before:"Antes", ba_after:"Después",
     log_title:"guardia nocturna - log de la flota", log_live:"● de guardia",
     svc_label:"Servicios",
     svc_h2:"Lo que el estudio hace por tu empresa.",
@@ -641,6 +815,10 @@ const I18N = {
     mf1:"Monolito Magento", mf2:"Secuencia Strangler Fig", mf3:"Next.js + BFF GraphQL",
     mf4:"Búsqueda Elasticsearch", mf5:"Listo para cutover, en homologación",
     job2_tag:"Verificación de identidad (KYC) contra el fraude en servicios entre personas - concebido, construido y lanzado de punta a punta; en línea en <a href='https://proovoo.com' rel='noopener'>proovoo.com</a>. Prueba de que una app/sitio completo sale de la idea a producción.",
+    ps1n:"2", ps1l:"audiencias ancla validadas",
+    ps2n:"2", ps2l:"plataformas en línea (web + apps)",
+    ps3n:"0", ps3l:"humanos en el embudo",
+    ps4n:"4", ps4l:"modos de protección",
     conc_t:"La concepción completa del producto - de la idea al aire",
     conc1:"Ideación",
     conc2:"3 business cases escritos",
@@ -670,7 +848,7 @@ const I18N = {
     proof_label:"Medido en un día típico",
     proof_h2:"La operación, en números.",
     st1:"tests automatizados en verde, por día",
-    st2:"frentes de trabajo en paralelo, una dirección",
+    st2:"señuelos plantados atrapados en auditoría a ciegas",
     st3:"ítems en el catálogo canónico, 13 líneas de producto",
     st4:"documentos de búsqueda, actualización cada 15 min",
     st5:"error encontrado en 48 mil ítems auditados del catálogo",
@@ -697,6 +875,22 @@ const I18N = {
     g2:"Flota: agentes Claude + Gemini, gobernados",
     g4:"Curitiba, Brasil - remoto para el mundo",
     footer_copy:"© 2026 Red Owl Software · Curitiba, Brasil",
+    contact_h2:"¿Tienes un proyecto como estos?",
+    contact_p:"Cuéntame qué estás construyendo.",
+    contact_cta_email:"Empezar un proyecto",
+    contact_cta_wa:"Escribir por WhatsApp",
+    sticky_email:"Correo", sticky_wa:"WhatsApp",
+    trust_label:"Si desaparezco mañana",
+    trust_h2:"Una persona. No un punto único de falla.",
+    trust_r1_id:"TÚ ERES DUEÑO DE TODO",
+    trust_r1_p:"Tu código vive en tu propio GitHub desde el primer commit, nunca en un repositorio personal mío. Eres dueño del dominio, de las claves de API, del hosting. Nada queda atado a una cuenta mía.",
+    trust_r2_id:"ENTREGA POR ESCRITO",
+    trust_r2_p:"La entrega queda documentada y versionada junto al código, no un PDF que solo yo tengo.",
+    pricing_label:"Contrataciones",
+    pricing_1_l:"Sitio web", pricing_1_v:"desde US$95",
+    pricing_2_l:"Automatización con agentes de IA", pricing_2_v:"desde US$80/h (precio de mercado)",
+    pricing_3_l:"Pipelines de datos", pricing_3_v:"alcance definido tras una llamada",
+    pricing_note:"Alcance y precio final se definen tras una llamada corta. Sin cargos ocultos.",
   }
 };
 
@@ -770,6 +964,17 @@ function owlSVG(){
   OWL_ROWS.forEach((row,y)=>{ [...row].forEach((ch,x)=>{ if(ch!=="." && OWL_COLORS[ch]) s+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${OWL_COLORS[ch]}"/>`; }); });
   return s;
 }
+/* stat band - entrada suave apenas, sem count-up; numero real ja esta no DOM */
+(function(){
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tiles = document.querySelectorAll('.sb-tile');
+  if(rm || !('IntersectionObserver' in window)){ tiles.forEach(function(t){t.classList.add('in');}); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.3});
+  tiles.forEach(function(t){ io.observe(t); });
+})();
+
 document.getElementById("owl-mark").innerHTML = owlSVG();
 const fav = document.createElement("link");
 fav.rel = "icon"; fav.type = "image/svg+xml";
